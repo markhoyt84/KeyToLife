@@ -1,0 +1,30 @@
+<div id="nav" class='navbar-container row'>
+    <div class="col span_2 logo">
+      <%= image_tag 'keytolifeheader.jpg', :class => 'logo_image' %>
+    </div>
+    <div class="col span_5 search_icon">
+      <a id="search-icon" href="#"><i class="fa fa-search"></i>Search</a>
+    </div>
+    <div class="col span_1 poop">
+      <a href=''>Log In</a>
+    </div>
+    <div class="col span_1 poop">
+      <a href=''>Contact</a>
+    </div>
+    <div class="col span_1 poop">
+      <a href=''>Cart ( 0 )</a>
+    </div>
+    <div class="col span_2 navbuttons">
+      <i class="fa fa-twitter-square fa-2x" style="color: white;"></i>
+      <i class="fa fa-facebook-square fa-2x" style="color: white;"></i>
+      <i class="fa fa-instagram fa-2x" style="color: white;"></i>
+    </div>
+</div>
+<script>
+  $('#search-icon').on('click', function(){
+    console.log('aids')
+  });
+  $(window).scroll(function() {
+    $('#navbar-container').css('top', $(this).scrollTop() + "px");
+});
+</script>
