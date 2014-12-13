@@ -27,6 +27,108 @@
     width: 100%;
 }
 
+@media (max-width : 650px) {
+    .search_icon {
+        text-align: center;
+    }
+
+    ul.topnav li ul.subnav {
+        width: 200px;
+    }
+
+    html ul.topnav li ul.subnav li a {
+        width: 200px;
+    }
+
+    ul.topnav li ul.subnav li{
+        width: 198px;
+    }
+
+    .container {
+        width: 200px;
+    }
+
+     .mobile_menu {
+        display: none;
+    }
+
+    .spacer {
+        height: 88px;
+    }
+
+    ul.topnav li ul.subnav {
+        left: -10px;
+    }
+
+    .navbars {
+        position: relative;
+        display: block;
+        float: left;
+        padding-left: 0.5em;
+    }
+
+    .navbar {
+        float: right;
+        padding-right: 0.5em;
+        display: block;
+    }
+
+    .homebar {
+        height: auto;
+        background-color: #c7ff91;
+        border: 1px solid black;
+    }
+
+    #resources {
+        display:block;
+        width: 100%;
+    }
+
+    .subBlocks {
+        display: block;
+    }
+
+    .welcome p {
+        font-size: 1em;
+    }
+
+    .subBlocks li {
+        list-style: none;
+        width: 150px;
+    }
+
+    .subnav {
+        display: none;
+    }
+
+    ul.topnav {
+        width: 100px;
+        float: left;
+        margin-left: -2.5em;
+}
+
+    .homelink {
+        text-align: center;
+        margin: 0 auto;
+        background-color: #c7ff91;
+        border: 1px solid black;
+    }
+
+    .emptycol {
+        display: none;
+    }
+
+    #index_main .col {
+        margin-top: 1em;
+    }
+
+    .welcome{
+        height: auto;
+        clear: both;
+        position: relative;
+    }
+}
+
 @media ( min-width : 650px ) {
 
     .gutters .col {

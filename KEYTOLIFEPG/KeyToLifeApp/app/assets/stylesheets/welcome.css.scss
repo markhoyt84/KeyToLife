@@ -1,3 +1,98 @@
 // Place all the styles related to the Welcome controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+.welcome {
+  padding: 0.4em;
+  box-shadow: #c7ff91 0px 0px 10px 1px;
+  height: 388px;
+  text-align: center;
+  overflow: none;
+}
+
+.welcome p {
+  font-size: 1.5vw;
+}
+
+.welcome h2 {
+  color: #c7ff91;
+  text-shadow: 0 0 3px black;
+  margin: 0 auto;
+}
+
+.footer-container {
+  background: white;
+  box-shadow: #c7ff91 0px 0px 10px 1px;
+}
+
+#index_main {
+  margin-bottom: 2em;
+}
+
+#subscribe-button {
+  margin-right: 1em;
+  float:right;
+}
+
+#email-input {
+  height: 26px;
+  margin-top: 0px;
+}
+
+ul.topnav {
+  list-style: none;
+  margin: 0;
+  width: 100%;
+  float: left;
+}
+
+ul.topnav li {
+  float: left;
+  margin: 0;
+  position: relative; /*--Declare X and Y axis base for sub navigation--*/
+}
+ul.topnav li a{
+  padding: 5px 5px;
+  color: #fff;
+  display: block;
+  text-decoration: none;
+  float: center;
+}
+
+ul.topnav li span.subhover {
+  background-position: center bottom;
+  cursor: pointer;
+} /*--Hover effect for trigger--*/
+
+ul.topnav li ul.subnav {
+  list-style: none;
+  position: absolute; /*--Important - Keeps subnav from affecting main navigation flow--*/
+  left: 0; top: 2.1em;
+  color: white;
+  background: #333;
+  margin: 0; padding: 0;
+  z-index: 99999;
+  display: none;
+  float: left;
+  width: 160px;
+  border: 1px solid #111;
+}
+ul.topnav li ul.subnav li{
+  margin: 0; padding: 0;
+  color: white;
+  border-top: 1px solid #252525; /*--Create bevel effect--*/
+  border-bottom: 1px solid #444; /*--Create bevel effect--*/
+  clear: both;
+  width: 158px;
+}
+html ul.topnav li ul.subnav li a {
+  float: left;
+  width: 145px;
+  padding-left: 20px;
+}
+
+.subBlocks {
+  display:none;
+}

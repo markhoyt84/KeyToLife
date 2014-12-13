@@ -1,14 +1,115 @@
 <div id='nav2'>
-  <div class='col span_1 ta-c ml-25'>
-    <a href="#">HOME</a>
+  <div class='col span_2 emptycol'>
+    <p></p>
   </div>
-  <div class='col span_2 ta-c'>
-    <a href="#">PRODUCTS</a>
+  <div class='homebar col span_2 ta-c'>
+    <ul class='topnav'>
+      <li>
+        <span><%= link_to 'HOME', root_path %></span>
+      </li>
+    </ul>
   </div>
-  <div class='col span_2 ta-c'>
-    <a href="#">RESOURCES</a>
+  <div class='homebar col span_2 ta-c'>
+    <ul class='topnav'>
+      <li>
+        <span><%= link_to 'PRODUCTS', categories_path %>
+          <ul class='subnav subnavremix'>
+            <li><a href='#'>Key To Life Nutrients</a></li>
+            <li><a href='#'>Easy Life Blends</a></li>
+            <li><a href='#'>Char-O-Lite</a></li>
+            <li><a href='#'>Cyclone Brewers</a></li>
+            <li><a href='#'>Induction Lights</a></li>
+            <li><a href='#'>Merchandise</a></li>
+          </ul>
+          <div class='subBlocks'>
+          </div>
+        </span>
+      </li>
+    </ul>
   </div>
-  <div class='col span_4'>
-    <a href="#">DEALERS</a>
+  <div class='homebar col span_2 ta-c'>
+    <ul class='topnav'>
+      <li>
+        <span><%= link_to 'RESOURCES', root_path %>
+          <ul class='subnav subnavremix'>
+            <li><a href='#'>Indoor Growing</a></li>
+            <li><a href='#'>Outdoor Growing</a></li>
+            <li><a href='#'></a></li>
+          </ul>
+          <div class='subBlocks'>
+          </div>
+        </span>
+      </li>
+    </ul>
   </div>
+  <div class='homebar col span_2 ta-c'>
+    <ul class='topnav'>
+      <li>
+        <span><a href="#">DEALERS</a>
+          <ul class='subnav subnavremix'>
+            <li><a href='#'>Find a Dealer</a></li>
+            <li><a href='#'>Become a Dealer</a></li>
+          </ul>
+          <div class='subBlocks'>
+          </div>
+        </span>
+      </li>
+    </ul>
+  </div>
+  <div class='col span_2 emptycol'></div>
 </div>
+
+<script>
+var width = $( document ).width()
+checkWidth(width)
+
+$( window ).resize(function() {
+  var newWidth = $( document ).width()
+  checkWidth(newWidth);
+});
+
+function checkWidth(windowWidth){
+if(windowWidth < 650){
+  var removeNav = $('.subnav')
+  for(var i = 0; i < removeNav.length; i++){
+    console.log(removeNav[i])
+    $(removeNav[i]).removeClass('subnav')
+    $(removeNav[i]).css('display', 'none')
+  };
+
+  $('span').hover(function(){
+    var current = $(this).parent()
+    var currList = $(current).find('ul').html();
+    var bList = $(current).find('.subBlocks')
+    var inText = '<ul>' + currList + '</ul>';
+    $(bList).html(inText);
+  }, function(){
+    var current = $(this).parent()
+    var bList = $(current).find('.subBlocks')
+    $(bList).text('');
+  });
+
+}else{
+  var subBlocksList = $('.subnavremix')
+    for(var i = 0; i < subBlocksList.length; i++){
+    $(subBlocksList[i]).addClass('subnav')
+  }
+  $("ul.topnav").hover(function() { //When trigger is clicked...
+
+    //Following events are applied to the subnav itself (moving subnav up and down)
+    $(this).parent().find("ul.subnav").slideDown(200).show(); //Drop down the subnav on click
+
+    $(this).parent().hover(function() {
+    }, function(){
+      $(this).parent().find("ul.subnav").slideUp(200); //When the mouse hovers out of the subnav, move it back up
+    });
+
+    //Following events are applied to the trigger (Hover events for the trigger)
+    }).hover(function() {
+      $(this).addClass("subhover"); //On hover over, add class "subhover"
+    }, function(){  //On Hover Out
+      $(this).removeClass("subhover"); //On hover out, remove class "subhover"
+  });
+};
+};
+</script>

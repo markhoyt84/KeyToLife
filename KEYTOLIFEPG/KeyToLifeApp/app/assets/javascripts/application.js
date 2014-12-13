@@ -15,3 +15,4 @@
 //= require turbolinks
 //= require_tree .
 //= require ../../../vendor/assets/javascripts/jssor.slider.mini.js
+

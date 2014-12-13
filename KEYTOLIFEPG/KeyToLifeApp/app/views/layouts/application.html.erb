@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KEY TO LIFE</title>
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
@@ -8,9 +11,12 @@
   <link href='http://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet' type='text/css'>
 </head>
 <body>
-<%= render 'navbar' %>
+<%= render 'welcome/navbar' %>
 <div class='spacer'></div>
-<%= render 'navbar2' %>
-<%= yield %>
+<%= render 'welcome/navbar2' %>
+<div class='container'>
+  <%= yield %>
+</div>
+<%= render 'welcome/footer' %>
 </body>
 </html>
