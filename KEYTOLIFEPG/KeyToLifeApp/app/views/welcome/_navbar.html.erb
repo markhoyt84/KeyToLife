@@ -7,7 +7,7 @@
   </a>
     <div class="mobile_menu col span_5 search_icon">
       <form>
-        <input  id='search_form' type="text">
+        <input id='search_form' type="text">
         <a id='search-icon' href='#'><i class="fa fa-search"></i>Search</a>
       </form>
     </div>
@@ -39,4 +39,19 @@
   $(window).scroll(function() {
     $('#navbar-container').css('top', $(this).scrollTop() + "px");
 });
+    var open;
+
+  $('.fa-bars').on('click', function(){
+    if(open != true){
+        $('#barnav').animate({
+          width: 'show'
+        });
+        open = true;
+    }else{
+      $('#barnav').animate({
+          width: 'hide'
+        });
+          open = false;
+    }
+  });
 </script>

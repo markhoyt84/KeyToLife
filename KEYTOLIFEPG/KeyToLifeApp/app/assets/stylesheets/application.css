@@ -28,7 +28,8 @@
 }
 
 .poop {
-  font-family: 'Comfortaa', cursive;
+  /*font-family: 'Comfortaa', cursive;*/
+  font-family: 'Audiowide', cursive;
   padding-top: 1.25em;
   height: 3.5em;
   text-align: center;
@@ -63,6 +64,10 @@
 }
 
 #search_form {
+  display: none;
+}
+
+#searched_form {
   display: none;
 }
 
@@ -120,9 +125,7 @@
   background-color: #c7ff91;
 }
 
-
-#nav2 a{
-  text-decoration: none;
+.maintab {
   color: black;
 }
 
@@ -165,7 +168,6 @@
 
 #nav2 a:hover{
   font-size: 1.4em;
-  color: white;
   background-color: transparent;
 }
 
@@ -182,3 +184,31 @@ textarea:focus, input:focus, input[type]:focus, .uneditable-input:focus {
     box-shadow: 0 3px 8px #c7ff91  inset, 0 0 8px #c7ff91;
     outline: 0 none;
 }
+
+#barnav{
+  display: none;
+  width:100%;
+  background-color: #333;
+  border: 1px solid #333;
+}
+
+#barnav ul{
+  list-style: none;
+  background-color: #333;
+}
+
+#barnav ul li {
+  margin-top: 0.5em;
+}
+
+#barnav a {
+  text-decoration: none;
+  color: white;
+}
+
+#barnav ul a:hover {
+  font-size: 1.3em;
+  color: #c7ff91;
+  background-color: transparent;
+}
+

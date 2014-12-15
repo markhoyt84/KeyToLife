@@ -1,3 +1,13 @@
+<div id='barnav'>
+  <ul>
+    <li><form>
+        <input id='searched_form' type="text">
+        <a id='searched-icon' href='#'><i class="fa fa-search"></i>Search</a>
+      </form></li>
+    <li><a class='c-w' href='#'>Log In</a></li>
+    <li><a class='c-w' href='#'>Contact Us</a></li>
+  </ul>
+</div>
 <div id='nav2'>
   <div class='col span_2 emptycol'>
     <p></p>
@@ -14,12 +24,12 @@
       <li>
         <span><%= link_to 'PRODUCTS', categories_path %>
           <ul class='subnav subnavremix'>
-            <li><a href='#'>Key To Life Nutrients</a></li>
-            <li><a href='#'>Easy Life Blends</a></li>
-            <li><a href='#'>Char-O-Lite</a></li>
-            <li><a href='#'>Cyclone Brewers</a></li>
-            <li><a href='#'>Induction Lights</a></li>
-            <li><a href='#'>Merchandise</a></li>
+            <li><a class='c-w' href='#'>Key To Life Nutrients</a></li>
+            <li><a class='c-w' href='#'>Easy Life Blends</a></li>
+            <li><a class='c-w' href='#'>Char-O-Lite</a></li>
+            <li><a class='c-w' href='#'>Cyclone Brewers</a></li>
+            <li><a class='c-w' href='#'>Induction Lights</a></li>
+            <li><a class='c-w' href='#'>Merchandise</a></li>
           </ul>
           <div class='subBlocks'>
           </div>
@@ -32,9 +42,8 @@
       <li>
         <span><%= link_to 'RESOURCES', root_path %>
           <ul class='subnav subnavremix'>
-            <li><a href='#'>Indoor Growing</a></li>
-            <li><a href='#'>Outdoor Growing</a></li>
-            <li><a href='#'></a></li>
+            <li><a class='c-w' href='#'>Indoor Growing</a></li>
+            <li><a class='c-w' href='#'>Outdoor Growing</a></li>
           </ul>
           <div class='subBlocks'>
           </div>
@@ -47,8 +56,8 @@
       <li>
         <span><a href="#">DEALERS</a>
           <ul class='subnav subnavremix'>
-            <li><a href='#'>Find a Dealer</a></li>
-            <li><a href='#'>Become a Dealer</a></li>
+            <li><a class='c-w' href='#'>Find a Dealer</a></li>
+            <li><a class='c-w'href='#'>Become a Dealer</a></li>
           </ul>
           <div class='subBlocks'>
           </div>
@@ -77,6 +86,8 @@ if(windowWidth < 650){
     $(removeNav[i]).css('display', 'none')
   };
 
+
+
   $('span').hover(function(){
     var current = $(this).parent()
     var currList = $(current).find('ul').html();
@@ -94,10 +105,14 @@ if(windowWidth < 650){
     for(var i = 0; i < subBlocksList.length; i++){
     $(subBlocksList[i]).addClass('subnav')
   }
-  $("ul.topnav").hover(function() { //When trigger is clicked...
+
+  $('#barnav').css('display', 'none')
+  $("ul.topnav a").hover(function() { //When trigger is clicked...
 
     //Following events are applied to the subnav itself (moving subnav up and down)
-    $(this).parent().find("ul.subnav").slideDown(200).show(); //Drop down the subnav on click
+    $(this).parent().find("ul.subnav").slideDown(200).show();
+     //Drop down the subnav on click
+     $('li').css('color', 'white');
 
     $(this).parent().hover(function() {
     }, function(){
@@ -112,4 +127,11 @@ if(windowWidth < 650){
   });
 };
 };
+
+$('#searched-icon').on('click', function(){
+    $(this).css('float', 'center');
+    $('#searched_form').animate({
+                 width: 'show'
+             });
+  });
 </script>
