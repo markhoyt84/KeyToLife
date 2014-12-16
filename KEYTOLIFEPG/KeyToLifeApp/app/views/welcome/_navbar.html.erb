@@ -1,15 +1,16 @@
 <div id="nav" class='navbar-container'>
-  <div class='col span_12'>
-    <a href='/'>
-    <div class="col span_2 logo">
-      <%= image_tag 'keytolifeheader.jpg', :class => 'logo_image' %>
-    </div>
-  </a>
+  <div class='row'>
     <div class="mobile_menu col span_5 search_icon">
       <form>
         <input id='search_form' type="text">
         <a id='search-icon' href='#'><i class="fa fa-search"></i>Search</a>
       </form>
+    </div> <a href='/'>
+    <div class="col span_2 logo">
+      <%= image_tag 'keytolifeheader.jpg', :class => 'logo_image' %>
+    </div>
+  </a>
+    <div class='col span_1 emptycol'></br>
     </div>
     <div class="mobile_menu col span_1 poop">
       <a href=''>Log In</a>
@@ -20,14 +21,25 @@
     <div class="mobile_menu col span_1 poop">
       <a href=''>Cart ( 12 )</a>
     </div>
-    <div class="col span_2 navbuttons">
+    <div class="col span_1 navbuttons">
      <i class="social navbars fa fa-bars fa-2x"></i>
-     <a href='https://twitter.com/KeyToLifeGarden' target="_blank"><i class="social fa fa-twitter-square fa-2x"></i></a>
+     <a href='https://twitter.com/KeyToLifeGarden'>
+     <i class="social fa fa-twitter-square fa-2x"></i></a>
       <a href="https://www.facebook.com/keytolifeco" target="_blank"><i class="social fa fa-facebook-square fa-2x"></i></a>
       <a href='http://instagram.com/keytolifegarden' target='_blank'><i class="social fa fa-instagram fa-2x"></i></a>
       <i class="navbar social fa fa-shopping-cart fa-2x"></i>
     </div>
   </div>
+  <div id='barnav'>
+  <ul>
+    <li><form>
+        <input id='searched_form' type="text">
+        <a id='searched-icon' href='#'><i class="fa fa-search"></i>Search</a>
+      </form></li>
+    <li><a class='c-w' href='#'>Log In</a></li>
+    <li><a class='c-w' href='#'>Contact Us</a></li>
+  </ul>
+</div>
 </div>
 <script>
   $('#search-icon').on('click', function(){

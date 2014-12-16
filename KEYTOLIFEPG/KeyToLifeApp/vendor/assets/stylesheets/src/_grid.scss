@@ -27,9 +27,66 @@
     width: 100%;
 }
 
+@media(max-width : 500px) {
+    .slogan {
+        display: none;
+    }
+}
+
+@media(max-width : 800px) {
+    .navbuttons{
+        padding-top: 0px;
+        height: 3.5em;
+        text-align: center;
+        background-color: black;
+    }
+
+    .navbuttons a i {
+        font-size: 3.0vw;
+    }
+}
+
 @media (max-width : 650px) {
     .search_icon {
         text-align: center;
+    }
+
+    .label img {
+      width: 50%;
+      height: 50%;
+      float: left;
+    }
+
+    .label_cont {
+        height: auto;
+    }
+
+    .main_img_div {
+        padding-left: 0px;
+
+    }
+
+    .mainimagediv{
+        width: 350px;
+    }
+
+    .main_img_div img {
+    height: auto;
+    width: 350px;
+    margin-top: -10px;
+    margin-left: -15px;
+    }
+
+    .logo {
+        display: none;
+    }
+    .navbuttons{
+        font-size: 1em;
+        height: 30px;
+    }
+
+    .navbuttons a i {
+        font-size: 2em;;
     }
 
     ul.topnav li ul.subnav {
@@ -53,7 +110,7 @@
     }
 
     .spacer {
-        height: 88px;
+        height: 29px;
     }
 
     ul.topnav li ul.subnav {

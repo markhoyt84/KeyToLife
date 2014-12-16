@@ -2,7 +2,8 @@ Rails.application.routes.draw do
 
 
   get 'welcome/index'
-  get 'welcome/about'
+  # get 'welcome/about' => 'welcome#about', as: :about
+  get 'about' => 'application#about', as: :about
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

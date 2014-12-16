@@ -2,11 +2,27 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.main_logo {
+  height: 40%;
+}
 
+.main_img_div{
+  overflow: hidden;
+  height: 150px;
+  padding-left: 100px;
+  z-index: 1;
+  float: left;
+}
+.main_img_div img {
+  height: auto;
+  width: 400px;
+  margin-top: -25px;
+  position: relative;
+}
 
 .welcome {
   padding: 0.4em;
-  box-shadow: #c7ff91 0px 0px 10px 1px;
+  box-shadow: #37FF00 0px 0px 10px 1px;
   height: 388px;
   text-align: center;
   overflow: none;
@@ -24,6 +40,10 @@
 
 .footer-container {
   background: white;
+  box-shadow: #37FF00 0px 0px 10px 1px;
+}
+
+.navbar-container {
   box-shadow: #c7ff91 0px 0px 10px 1px;
 }
 
@@ -62,6 +82,7 @@ ul.topnav li a{
   display: block;
   text-decoration: none;
   float: center;
+  font-family: 'Audiowide', cursive;
 }
 
 ul.topnav li span.subhover {
@@ -98,4 +119,32 @@ html ul.topnav li ul.subnav li a {
 
 .subBlocks {
   display:none;
+}
+
+.slogan {
+  margin-bottom: 0px;
+  font-family: 'Audiowide', cursive;
+}
+
+.slogan p{
+  font-family: 'Audiowide', cursive;
+}
+
+.mainimagediv{
+  width: 400px;
+  float:left;
+}
+
+.label img {
+  width: 100%;
+  height: auto;
+  margin-top: 8%;
+}
+
+.label_cont {
+  width: 100%;
+  overflow: none;
+  background-color: white;
+  box-shadow: #37FF00 0px 0px 10px 1px;
+  height: 388px;
 }

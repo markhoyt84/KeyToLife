@@ -1,13 +1,18 @@
-<div id='barnav'>
-  <ul>
-    <li><form>
-        <input id='searched_form' type="text">
-        <a id='searched-icon' href='#'><i class="fa fa-search"></i>Search</a>
-      </form></li>
-    <li><a class='c-w' href='#'>Log In</a></li>
-    <li><a class='c-w' href='#'>Contact Us</a></li>
-  </ul>
-</div>
+<div class='row bgc-b'>
+    <div class='col span_12 main_img_div'>
+    <div class='mainimagediv'>
+    <%= image_tag "logo_bars.jpg", :class => 'main_logo' %>
+  </div>
+    <div class='slogan'>
+    </br>
+    </br>
+    </br>
+    </br>
+    </br>
+      <p style='color: white;'>Unlock Happier</br>     &nbsp&nbsp&nbsp&nbsp Healthier Gardens...</p>
+    </div>
+    </div>
+  </div>
 <div id='nav2'>
   <div class='col span_2 emptycol'>
     <p></p>
@@ -75,15 +80,15 @@ checkWidth(width)
 $( window ).resize(function() {
   var newWidth = $( document ).width()
   checkWidth(newWidth);
+  checkSpot();
 });
 
 function checkWidth(windowWidth){
 if(windowWidth < 650){
   var removeNav = $('.subnav')
   for(var i = 0; i < removeNav.length; i++){
-    console.log(removeNav[i])
-    $(removeNav[i]).removeClass('subnav')
-    $(removeNav[i]).css('display', 'none')
+    $(removeNav[i]).removeClass('subnav');
+    $(removeNav[i]).css('display', 'none');
   };
 
 

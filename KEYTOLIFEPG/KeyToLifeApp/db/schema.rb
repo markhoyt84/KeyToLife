@@ -46,10 +46,10 @@ ActiveRecord::Schema.define(version: 20141210004218) do
   create_table "products", force: true do |t|
     t.string   "name"
     t.string   "sku"
-    t.string   "description"
-    t.string   "option"
-    t.string   "quantity"
-    t.decimal  "price",       precision: 10, scale: 2
+    t.string   "size"
+    t.float    "Dist"
+    t.float    "WS"
+    t.float    "MSRP"
     t.integer  "category_id"
     t.datetime "created_at"
     t.datetime "updated_at"

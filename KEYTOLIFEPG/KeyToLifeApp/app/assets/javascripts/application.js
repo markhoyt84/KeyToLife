@@ -16,3 +16,24 @@
 //= require_tree .
 //= require ../../../vendor/assets/javascripts/jssor.slider.mini.js
 
+var checkSpot = function(){
+$(window).scroll(function(){
+  var pos = scroller();
+  if(pos > 128){
+    $('.logo_image').css('visibility', 'visible')
+    $('.logo').css('display', 'block');
+  }else{
+    $('.logo_image').css('visibility', 'hidden')
+    if($( document ).width() < 650){
+    $('.logo').css('display', 'none');
+  };
+  };
+});
+
+function scroller(){
+  var pos = $(window).scrollTop();
+  return pos;
+};
+};
+
+checkSpot();
