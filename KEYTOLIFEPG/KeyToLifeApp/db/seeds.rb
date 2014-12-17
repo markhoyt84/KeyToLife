@@ -12,6 +12,7 @@ require 'csv'
 csv_text = File.read('public/Distributor_Prices.csv')
 csv = CSV.parse(csv_text, :headers => true)
 csv.each do |row|
+  p row
   Product.create!(row.to_hash)
 end
 

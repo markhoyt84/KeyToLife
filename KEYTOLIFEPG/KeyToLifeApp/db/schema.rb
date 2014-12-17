@@ -45,8 +45,8 @@ ActiveRecord::Schema.define(version: 20141210004218) do
 
   create_table "products", force: true do |t|
     t.string   "name"
-    t.string   "sku"
     t.string   "size"
+    t.string   "sku"
     t.float    "Dist"
     t.float    "WS"
     t.float    "MSRP"

@@ -1,3 +1,18 @@
 // Place all the styles related to the categories controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.fake_image {
+  width: 200px;
+  height: 200px;
+}
+
+.category_main {
+  width: 200px;
+  height: 500px;
+}
+
+.category_main ul li {
+  list-style: none;
+}

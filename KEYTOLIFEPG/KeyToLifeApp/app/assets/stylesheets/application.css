@@ -16,6 +16,23 @@
  *= require ../../../vendor/assets/stylesheets/src/main.scss
  */
 
+
+.fake_image {
+  width: 200px;
+  height: 200px;
+  display: inline-block;
+  position: relative
+}
+
+.category_main {
+  height: 200px;
+}
+
+.category_main ul li {
+  list-style: none;
+  color: black;
+}
+
 .hiSlider-log {
   display: none;
 }
