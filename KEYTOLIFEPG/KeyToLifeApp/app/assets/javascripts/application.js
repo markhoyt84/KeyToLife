@@ -37,3 +37,7 @@ function scroller(){
 };
 
 checkSpot();
+
+$('img.catphoto').on('click', function(){
+  console.log('working');
+});

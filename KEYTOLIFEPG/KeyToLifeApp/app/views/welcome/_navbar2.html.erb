@@ -29,12 +29,9 @@
       <li>
         <span><%= link_to 'PRODUCTS', categories_path %>
           <ul class='subnav subnavremix'>
-            <li><a class='c-w' href='#'>Key To Life Nutrients</a></li>
-            <li><a class='c-w' href='localhost:3000/categories/3'>Easy Life Blends</a></li>
-            <li><a class='c-w' href='#'>Char-O-Lite</a></li>
-            <li><a class='c-w' href='#'>Cyclone Brewers</a></li>
-            <li><a class='c-w' href='#'>Induction Lights</a></li>
-            <li><a class='c-w' href='#'>Merchandise</a></li>
+            <% @categories.each do |category| %>
+            <li><%= link_to category.name, category_path(category), :class=> 'c-w' %></li>
+            <% end %>
           </ul>
           <div class='subBlocks'>
           </div>

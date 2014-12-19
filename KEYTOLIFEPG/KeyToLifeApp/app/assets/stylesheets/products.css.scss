@@ -1,3 +1,54 @@
 // Place all the styles related to the products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.product_title {
+  font-family: 'Audiowide', cursive;
+  text-align: center;
+  font-size: 3em;
+}
+
+.product_info {
+  text-align: center;
+  padding: 1em;
+}
+
+div.show_photo {
+  text-align: center;
+}
+
+div.show_photo img {
+  max-height: 300px;
+  width: 80%;
+  height: auto;
+  max-width:250px;
+  margin: 0 auto;
+  border-radius: 15px;
+  box-shadow: black 0px 0px 10px 1px;
+}
+
+span.price_range {
+  font-family: 'Audiowide', cursive;
+  color: #37FF00;
+  font-size: 2em;
+  text-shadow: 0 0 3px black;
+}
+span.show_desc {
+  font-size: 2.0em;
+}
+
+.product_table td {
+  width: 120px;
+}
+
+span#current_price{
+  font-family: 'Audiowide', cursive;
+  color: #37FF00;
+  font-size: 1.5em;
+  text-shadow: 0 0 3px black;
+}
+
+.product_table {
+  margin: 0 auto;
+}

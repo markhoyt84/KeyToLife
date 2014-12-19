@@ -1,8 +1,7 @@
 class CategoriesController < ApplicationController
+  before_action :get_categories, only: [:index, :show]
 
   def index
-    categories = Category.all
-    @categories = categories.each_slice(3).to_a
   end
 
   def show
@@ -11,6 +10,27 @@ class CategoriesController < ApplicationController
       @products = category.products.where('size' => '2 oz.')
     elsif category.id == 2
       @products = category.products.where('size' => '2 oz.')
+    elsif category.id == 3
+      @products = category.products
+    elsif category.id == 4
+      @products = []
+      @products << category.products.first
+    elsif category.id == 5
+      @products = []
+      @products << category.products.first
+    elsif category.id == 6
+      prods = category.products
+      hats = prods.find(116)
+      shirts = prods.find(113)
+      @products = []
+      @products << hats
+      @products << shirts
     end
+  end
+
+  private
+
+  def get_categories
+    @categories = Category.all
   end
 end

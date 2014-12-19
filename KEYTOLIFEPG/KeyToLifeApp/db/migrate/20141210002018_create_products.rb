@@ -8,6 +8,7 @@ class CreateProducts < ActiveRecord::Migration
       t.float :WS
       t.float :MSRP
       t.references :category
+      t.references :description
 
       t.timestamps
     end

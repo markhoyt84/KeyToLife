@@ -1,4 +1,47 @@
-<p id="notice"><%= notice %></p>
+<div class='row'>
+  <div class='show_photo col span_6'>
+    <%= image_tag(@product.photos.first.url) %>
+  </div>
+<div class='product_info col span_6'>
+<span class='product_title'><%= @name || @product.name %></span><br>
+<br>
+<span class='price_range'><%= @description.range %></span><br>
+<br>
+<span class='show_desc'><%= @description.headline %></span><br>
+</div>
+<div class='debug product_info col span_6'>
+  <table class='product_table'>
+    <tr>
+      <td class='debug'>
+      <span>Option:</span>
+      <select class='option_list'>
+        <% @products.each do |prod| %>
+        <option id="<%= prod.id %>" data="<%=prod.sku %>" value="<%= prod.MSRP %>" ><%= prod.size %></option>
+        <% end %>
+      </select>
+      </td>
+      <td class='debug'>
+            <span id='current_SKU'>SKU: <%= @product.sku %></span><br>
+            <br>
+            <span id='current_price'>$<%= @products[0].MSRP %></span>
+      </td>
+      <td class='debug'>
+        <form>
+          <%= button_to 'BUY NOW', product_path(@product) %>
+        </form>
+      </td>
+    </tr>
+  </table>
+</div>
+</div>
+</div>
 
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
+
+<script>
+$('.option_list').change(function(){
+  var itemID = $('option:selected').attr('value');
+  var itemSKU = $('option:selected').attr('data');
+  $('#current_price').text("$" + itemID);
+  $('#current_SKU').text("SKU: " + itemSKU);
+});
+</script>

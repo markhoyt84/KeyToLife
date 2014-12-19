@@ -1,6 +1,16 @@
-<div class='debug col span_4'>
-  <%= link_to 'Product', product_path(product) %>
-  <%= product.name %>
-  <%= product.sku %>
-  <%= product.category_id %>
+<div class='item col'>
+  <%= link_to product_path(product) do %>
+<div class='main-page-detail'>
+    <span class="text-content"><span><%= product.name %><br>
+      <br>
+      <span class='prices'><%= product.description.range %></span>
+      <br>
+      <%= product.description.headline %><br>
+    </span></span>
 </div>
+<div class="main-page-bg"></div>
+   <%= link_to image_tag(product.photos.first.url, :class => 'main-page-thumb'), product_path(product) %>
+   <% end %>
+</div>
+
+

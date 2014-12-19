@@ -1,6 +1,11 @@
-<div class='debug row'>
-<% @products.each do |prod| %>
-  <div class='debug col span_4'>
-    <%= render partial: prod %>
-  </div>
+<div class='row'>
+  <table class='img_table'>
+    <tr>
+  <% @products.each do |prod| %>
+      <td class='img-list'>
+      <%= render partial: prod%>
+      </td>
 <% end %>
+    </tr>
+</table>
+</div>
