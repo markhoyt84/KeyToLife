@@ -1,0 +1,119 @@
+// Place all the styles related to the ShoppingCarts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.cart_table {
+  width: 100%;
+  text-align: left;
+  padding-left: 10px;
+}
+
+.cart_table p {
+  text-align: center;
+  width: 100%;
+}
+
+
+.view_row {
+  text-align: center;
+}
+
+.cart_page tr.view_row {
+  display: none;
+}
+
+.cart_page tr {
+  height: 3em;
+  border: 1px solid black;
+}
+
+.link_to_button {
+  color: black;
+  font-family: 'Audiowide', Arial;
+}
+
+.link_to_button:hover {
+  color: #c7ff91;
+}
+
+.cartlink:hover{
+   background-color: transparent;
+}
+
+.total_table{
+  width: 100%;
+  text-align: left;
+  padding-left: 10px;
+}
+
+
+.update_quantity_button {
+  font-size: 0.6em;
+  padding-top: -2px;
+}
+
+select#cart_item_sku{
+  font-size: 0.6em;
+}
+
+.cart_stat {
+  padding-top: 15px;
+  min-height: 50px;
+  height: 100%;
+  text-align: center;
+  font-family: 'Audiowide', Arial;
+  color: black;
+  font-size: 1.7em;
+  text-shadow: 0 0 1px #37FF00;
+
+}
+
+.cart_stat p {
+  font-family: 'Audiowide', Arial;
+  color: black;
+  font-size: 1.0em;
+  text-shadow: 0 0 1px #37FF00;
+  vertical-align: middle;
+}
+
+.cart_stat_name {
+  padding-top: 7.5px;
+  min-height: 50px;
+  height: auto;
+  padding-bottom: 7.5px;
+  text-align: center;
+  font-family: 'Audiowide', Arial;
+  color: black;
+  font-size: 1.7em;
+  text-shadow: 0 0 1px #37FF00;
+  vertical-align: center;
+}
+
+#new_cart_item {
+  margin-top: -3px;
+}
+
+.cart_title {
+  text-align: center;
+}
+
+.cart_title_row {
+  border-bottom: 2px solid black;
+}
+
+.cart_item:hover {
+  border: 2px solid black;
+  transform: scale(1.05);
+  height: 100%;
+}
+
+.cart_totals {
+  border-top: 2px solid black;
+}
+
+.cart_item {
+  min-height: 60px;
+  height: auto;
+  padding: 5px;
+}

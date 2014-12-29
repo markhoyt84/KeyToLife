@@ -4,7 +4,7 @@
 
 
 .product_title {
-  font-family: 'Audiowide', cursive;
+  font-family: 'Audiowide', Arial;
   text-align: center;
   font-size: 3em;
 }
@@ -29,7 +29,7 @@ div.show_photo img {
 }
 
 span.price_range {
-  font-family: 'Audiowide', cursive;
+  font-family: 'Audiowide', Arial;
   color: #37FF00;
   font-size: 2em;
   text-shadow: 0 0 3px black;
@@ -43,7 +43,7 @@ span.show_desc {
 }
 
 span#current_price{
-  font-family: 'Audiowide', cursive;
+  font-family: 'Audiowide', Arial;
   color: #37FF00;
   font-size: 1.5em;
   text-shadow: 0 0 3px black;
@@ -51,4 +51,117 @@ span#current_price{
 
 .product_table {
   margin: 0 auto;
+}
+
+.buy_form_table td{
+  width: 150px;
+}
+
+// Description and review tab CSS
+
+.prod_description_tab {
+  line-height: 1.5em;
+  margin-bottom: 25px;
+  height: auto;
+  font-family: 'Audiowide', Arial;
+  color: black;
+  font-size: 1.7em;
+  text-shadow: 0 0 1px #37FF00;
+  text-align: center;
+  border-bottom: 1px solid black;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-radius: 5px;
+  padding: 1em;
+}
+
+.buy_button {
+  font-size: 1.5em;
+  border-radius: 8px;
+}
+
+.buy_button:hover {
+  background-color: #37FF00;
+  font-size: 1.8em;
+   box-shadow: black 0px 0px 10px 1px;
+}
+
+.prod_description_tab_description {
+  text-align: center;
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.prod_description_tab_directions {
+  text-align: center;
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-radius: 5px;
+  border-bottom: 1px solid black;
+  overflow: hidden;
+}
+
+.prod_description_tab_description:hover {
+  background-color: #333;
+  color: white;
+  transform: scale(1.1);
+  box-shadow: #37FF00 0px 0px 10px 1px;
+}
+
+.prod_description_tab_reviews {
+  text-align: center;
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-radius: 5px;
+  border-bottom: 1px solid black;
+  overflow: hidden;
+}
+
+.prod_description_tab_reviews:hover {
+  background-color: #333;
+  color: white;
+  transform: scale(1.1);
+  box-shadow: #37FF00 0px 0px 10px 1px;
+}
+
+.prod_description_tab_directions:hover {
+  background-color: #333;
+  color: white;
+  transform: scale(1.1);
+  box-shadow: #37FF00 0px 0px 10px 1px;
+}
+
+.prod_reviews_tab {
+  border-bottom: 1px solid black;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-radius: 5px;
+  padding: 1em;
+  margin-bottom: 25px;
+  height: auto;
+}
+
+.prod_directions_tab {
+  line-height: 1.5em;
+  margin-bottom: 25px;
+  height: auto;
+  font-family: 'Audiowide', Arial;
+  color: black;
+  font-size: 1.7em;
+  text-shadow: 0 0 1px #37FF00;
+  text-align: center;
+  border-bottom: 1px solid black;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-radius: 5px;
+  padding: 1em;
+}
+
+.product_display {
+  margin-top: 30px;
 }

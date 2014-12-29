@@ -1,6 +1,20 @@
 // Place all the styles related to the Welcome controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.current_cart{
+  position: absolute; /*--Important - Keeps subnav from affecting main navigation flow--*/
+  top: 46px;
+  margin-left: -16.66667%;
+  color: white;
+  background: #333;
+  padding: 0;
+  display: none;
+  z-index: 99999;
+  float: center;
+  width: 33.333333%;
+  border: 1px solid #111;
+}
+
 
 .main_logo {
   height: 40%;
@@ -77,12 +91,14 @@ ul.topnav li a{
   display: block;
   text-decoration: none;
   float: center;
-  font-family: 'Audiowide', cursive;
+  font-family: 'Audiowide', Arial;
+  color: black;
 }
 
 ul.topnav li span.subhover {
   background-position: center bottom;
   cursor: pointer;
+  color: white;
 } /*--Hover effect for trigger--*/
 
 ul.topnav li ul.subnav {
@@ -100,7 +116,7 @@ ul.topnav li ul.subnav {
 }
 ul.topnav li ul.subnav li{
   margin: 0; padding: 0;
-  color: white;
+  color: red;
   border-top: 1px solid #252525; /*--Create bevel effect--*/
   border-bottom: 1px solid #444; /*--Create bevel effect--*/
   clear: both;
@@ -110,6 +126,7 @@ html ul.topnav li ul.subnav li a {
   float: left;
   width: 145px;
   padding-left: 20px;
+  color:white;
 }
 
 .subBlocks {
@@ -118,11 +135,11 @@ html ul.topnav li ul.subnav li a {
 
 .slogan {
   margin-bottom: 0px;
-  font-family: 'Audiowide', cursive;
+  font-family: 'Audiowide', Arial;
 }
 
 .slogan p{
-  font-family: 'Audiowide', cursive;
+  font-family: 'Audiowide', Arial;
 }
 
 .mainimagediv{

@@ -18,8 +18,15 @@
     <div class="mobile_menu col span_1 poop">
       <a href=''>Contact</a>
     </div>
-    <div class="mobile_menu col span_1 poop">
-      <a href=''>Cart ( 12 )</a>
+    <div class="mobile_menu col span_1 poop cart_link">
+      <% if @current_cart %>
+      <%= link_to shopping_cart_path(@current_cart) do %>Cart (<span id='cartlength'><%= render 'cart_items/num_items' %></span>)<% end %>
+      <% else %>
+      <a href='#'>Cart (<span id='cartlength'><%= render 'cart_items/num_items' %></span>)</a>
+      <% end %>
+      <div id='currentest_cart' class='current_cart'>
+          <%= render 'cart_items/index' %>
+      </div>
     </div>
     <div class="col span_1 navbuttons">
      <i class="social navbars fa fa-bars fa-2x"></i>
@@ -66,4 +73,11 @@
           open = false;
     }
   });
+
+  $('.cart_link').hover(function(){
+    $('.current_cart').css('display', 'block')
+  }, function(){
+    $('.current_cart').css('display', 'none')
+  });
+
 </script>

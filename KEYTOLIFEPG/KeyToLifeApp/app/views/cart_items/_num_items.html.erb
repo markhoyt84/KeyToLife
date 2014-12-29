@@ -1,0 +1,7 @@
+<% if @current_cart == nil%>
+  <%=0%>
+<% elsif @current_cart %>
+  <%= @current_cart.cart_items.length %>
+<% else %>
+  <%=0%>
+<% end %>

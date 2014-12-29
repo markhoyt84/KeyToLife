@@ -1,4 +1,4 @@
-<div class='row'>
+<div class='row product_display'>
   <div class='show_photo col span_6'>
     <%= image_tag(@product.photos.first.url) %>
   </div>
@@ -9,39 +9,101 @@
 <br>
 <span class='show_desc'><%= @description.headline %></span><br>
 </div>
-<div class='debug product_info col span_6'>
-  <table class='product_table'>
-    <tr>
-      <td class='debug'>
-      <span>Option:</span>
-      <select class='option_list'>
-        <% @products.each do |prod| %>
-        <option id="<%= prod.id %>" data="<%=prod.sku %>" value="<%= prod.MSRP %>" ><%= prod.size %></option>
-        <% end %>
-      </select>
-      </td>
-      <td class='debug'>
-            <span id='current_SKU'>SKU: <%= @product.sku %></span><br>
-            <br>
-            <span id='current_price'>$<%= @products[0].MSRP %></span>
-      </td>
-      <td class='debug'>
-        <form>
-          <%= button_to 'BUY NOW', product_path(@product) %>
-        </form>
-      </td>
-    </tr>
-  </table>
+<div class='product_info col span_6'>
+  <p id="notice"><%= notice %></p>
+  <%= render 'cart_items/form' %>
 </div>
 </div>
+</div>
+<div class='row'>
+  <div class='col span_3'><p></p></div>
+  <div class='col span_2 prod_description_tab_description'>
+    <h2>Description</h2>
+  </div>
+  <div class='col span_2 prod_description_tab_directions'>
+    <h2>Directions</h2>
+  </div>
+  <div class='col span_2 prod_description_tab_reviews'>
+    <h2>Reviews</h2>
+  </div>
+  <div class='col span_3'></div>
+</div>
+<div class='row'>
+  <div class='col span_3'><p></p></div>
+  <div class='col span_6 prod_description_tab'>
+  <%= @description.description %><br>
+  <br>
+  <%= @description.love %>
+  </div>
+  <div class='col span_6 prod_directions_tab' style="display: none;">
+  <%= @description.directions %>
+  <% if @description.derived != nil %>
+  <h4>Derived From: </h4><%= @description.derived %>
+  <% end %>
+  <% if @description.ingredient != nil %>
+  <h4>Contains: </h4><%= @description.ingredient %>
+  <% end %>
+  </div>
+  <div class='col span_6 prod_reviews_tab' style="display: none;">
+    <h4>Reviews may only be left by customers who have purchased <%= @product.name %>.</h4>
+  </div>
+  <div class='col span_3'></div>
 </div>
 
 
 <script>
-$('.option_list').change(function(){
-  var itemID = $('option:selected').attr('value');
-  var itemSKU = $('option:selected').attr('data');
-  $('#current_price').text("$" + itemID);
+var cartNum = parseInt($('#cartlength').text());
+$('#cartlength').text(" " + (cartNum - 1) + " ");
+$('#cart_item_id').change(function(){
+  var itemPrice = $('option:selected').attr('data');
+  var itemSKU = $('option:selected').attr('sku');
+  $('#current_price').text("$" + itemPrice);
   $('#current_SKU').text("SKU: " + itemSKU);
+});
+
+$('.prod_description_tab_reviews').on('click', function(){
+  $('.prod_description_tab').css('display', 'none');
+  $('.prod_description_tab_description').css('border-bottom', '1px solid black');
+  $('.prod_reviews_tab').css('display', 'block');
+  $('.prod_directions_tab').css('display', 'none');
+  $('.prod_description_tab_directions').css('border-bottom', '1px solid black');
+  $(this).css('border-bottom', '0px solid white');
+});
+
+$('.prod_description_tab_directions').on('click', function(){
+  $('.prod_description_tab').css('display', 'none');
+  $('.prod_description_tab_description').css('border-bottom', '1px solid black');
+  $('.prod_reviews_tab').css('display', 'none');
+  $('.prod_description_tab_reviews').css('border-bottom', '1px solid black');
+  $('.prod_directions_tab').css('display', 'block');
+  $(this).css('border-bottom', '0px solid white');
+})
+
+$('.prod_description_tab_description').on('click', function(){
+  $('.prod_description_tab').css('display', 'block');
+  $('.prod_reviews_tab').css('display', 'none');
+  $('.prod_description_tab_reviews').css('border-bottom', '1px solid black');
+  $('.prod_directions_tab').css('display', 'none');
+  $('.prod_description_tab_directions').css('border-bottom', '1px solid black');
+  $('.prod_description_tab_description').css('border-bottom', '0px solid white');
+});
+
+$('.buy_button').on('click', function(e){
+  e.preventDefault;
+  console.log('coward');
+  var cartNum = parseInt($('#cartlength').text());
+  $('#cartlength').text(" " + (cartNum + 1) + " ");
+  $('#notice').html("<%= flash[:notice] %>")
+  // $('#currentest_cart').html("<%= j (render(:partial => 'shopping_carts/modal')).html_safe %>")
+  // var itemId = $('option:selected').attr('id');
+  // var cartNum = parseInt($('#cartlength').text());
+  // $('#cartlength').text(cartNum + 1);
+  // $.ajax({
+  //   type: 'POST',
+  //   url: 'shopping_carts/cart_items/'
+  // }).done(function(){
+  //   $('table.cart_table').append()
+  // }
+  // );
 });
 </script>

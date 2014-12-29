@@ -1,0 +1,30 @@
+<% if @current_cart %>
+<table class='cart_table'>
+  <tbody>
+  <tr>
+    <td class='size'>SIZE</td><td class='item_name'>NAME</td><td class='cost'>PRICE</td>
+  </tr>
+  <tr>
+    <td><hr></td><td><hr></td><td><hr></td>
+  </tr>
+<% @current_cart.cart_items.each do |item| %>
+    <%= render partial: 'cart_items/show', locals: {item: item} %>
+<% end %>
+</tbody>
+</table>
+<table class='total_table'>
+  <tbody>
+  <tr>
+    <td><hr></td><td><hr></td><td><hr></td>
+  </tr>
+  <tr>
+    <td class='size'>TOTAL:</td><td class='item_name'><td class='cost'><%= number_to_currency(@current_cart.total) %></td>
+  </tr>
+  <tr class='view_row'>
+    <td></td><td><%=link_to shopping_cart_path(@current_cart), :class =>'cartlink' do %><button class='debug link_to_button'>VIEW CART</button><% end %></td>
+  </tr>
+  </tbody>
+</table>
+<% else %>
+  <p>Your cart is empty</p>
+<% end %>

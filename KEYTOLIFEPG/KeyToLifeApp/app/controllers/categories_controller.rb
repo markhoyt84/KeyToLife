@@ -1,5 +1,16 @@
 class CategoriesController < ApplicationController
   before_action :get_categories, only: [:index, :show]
+  before_action :get_cart
+
+
+  def get_cart
+    if session[:current_cart] == nil
+      @current_cart = false
+    else
+      @current_cart = ShoppingCart.find(session[:current_cart])
+    end
+  end
+
 
   def index
   end

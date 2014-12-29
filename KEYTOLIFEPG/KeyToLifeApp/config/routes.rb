@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
+  resources :shopping_carts do
+      resources :cart_items
+  end
 
+  devise_for :users, path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'register' }
   get 'welcome/index'
   # get 'welcome/about' => 'welcome#about', as: :about
   get 'about' => 'application#about', as: :about
@@ -13,7 +17,12 @@ Rails.application.routes.draw do
 
   resources :categories
 
-  resources :products
+  resources :products do
+    member do
+      post 'add_to_session_cart'
+    end
+  end
+
 
   resources :customers
   # Example of regular route:

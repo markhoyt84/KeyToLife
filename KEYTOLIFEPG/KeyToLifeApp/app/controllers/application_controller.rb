@@ -6,4 +6,14 @@ class ApplicationController < ActionController::Base
   def about
     @categories = Category.all
   end
+
+  def add_to_session_cart
+    respond_to do |format|
+      format.html
+      format.js
+    end
+    session[:cart_items]
+
+end
+
 end

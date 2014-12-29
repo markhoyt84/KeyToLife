@@ -1,0 +1,21 @@
+<%= form_for([@current_cart, @cart_item = @current_cart.cart_items.build], :remote => true) do |f| %>
+  <table class='buy_form_table'>
+    <tr>
+    <td>
+    <%= f.label :Option %><br>
+    <%= f.select(:id) do %>
+      <% array = [] %>
+      <% @products.each do |prod| %>
+      <% new_array = [prod.size, prod.id, { 'data' => prod.MSRP, 'sku' => prod.sku}] %>
+      <% array << new_array %>
+      <% end %>
+      <%= options_for_select(array) %>
+    <% end %>
+  </td>
+      <%= render 'products/sizes' %>
+  <td>
+    <%= f.submit 'BUY NOW', :class => 'buy_button' %>
+  </td>
+</tr>
+</table>
+<% end %>

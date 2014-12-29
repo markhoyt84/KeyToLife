@@ -15,6 +15,12 @@
  *= require_self
  *= require ../../../vendor/assets/stylesheets/src/main.scss
  */
+
+
+.current_cart {
+  padding: 10px;
+}
+
 .text-content {
   text-decoration: none;
   color: white;
@@ -67,7 +73,7 @@ span.prices a{
   text-align: center;
   color: white;
   font-size: 2em;
-  font-family: 'Audiowide', cursive;
+  font-family: 'Audiowide', Arial;
   text-shadow: 0 0 3px black;
   z-index: 1;
   line-height: 0.8em;
@@ -115,6 +121,7 @@ td.img-list img:hover span.text-content {
   border: 1px solid #37FF00;
   opacity: 1;
   box-shadow: black 0px 0px 10px 1px;
+  min-height: 250px;
 }
 
 .img_table {
@@ -133,6 +140,7 @@ td.img-list {
   text-align: center;
   display: inline-table;
   width: 200px;
+  min-height: 200px;
 }
 
 .box-shadow {
@@ -159,6 +167,7 @@ td.img-list {
   background: white;
   box-shadow: #37FF00 0px 0px 10px 1px;
   margin-top: 2em;
+  clear: both;
 }
 
 
@@ -217,8 +226,8 @@ td.img-list {
 }
 
 .poop {
-  /*font-family: 'Comfortaa', cursive;*/
-  font-family: 'Audiowide', cursive;
+  /*font-family: 'Comfortaa', Arial;*/
+  font-family: 'Audiowide', Arial;
   padding-top: 1.25em;
   height: 3.5em;
   text-align: center;
@@ -283,7 +292,7 @@ td.img-list {
 }
 
 .search_icon{
-  font-family: 'Audiowide', cursive;
+  font-family: 'Audiowide', Arial;
   text-align: left;
   padding-top: 1.25em;
   height: 3.5em;

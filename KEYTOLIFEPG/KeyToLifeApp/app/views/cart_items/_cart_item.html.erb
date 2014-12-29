@@ -1,0 +1,17 @@
+<div class='row cart_item' id='item_<%=item.id%>'>
+  <div class='col span_3 cart_stat_name'>
+    <%= item.name %>
+    <br>
+    <%= item.size %>
+  </div>
+  <div class='col span_3 cart_stat'>
+
+      <%= link_to 'Remove', shopping_cart_cart_item_path(@current_cart, item), :class => 'deleted', method: :delete, remote: true %>
+  </div>
+  <div class='col span_3 cart_stat'>
+
+  </div>
+  <div class='col span_3 cart_stat'>
+  <%=number_to_currency(item.price) %>
+  </div>
+</div>

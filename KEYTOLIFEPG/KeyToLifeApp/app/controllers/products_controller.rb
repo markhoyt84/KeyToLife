@@ -1,5 +1,16 @@
 class ProductsController < ApplicationController
-  # before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :get_cart
+
+
+  def get_cart
+    if session[:current_cart] == nil
+      @current_cart = ShoppingCart.create
+      session[:current_cart] = @current_cart.id
+    else
+      @current_cart = ShoppingCart.find(session[:current_cart])
+    end
+  end
+
 
   # GET /products
   # GET /products.json
@@ -10,8 +21,17 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
+    # @current_cart = ShoppingCart.create
+    get_cart
+    p '*' * 100
+    p @current_cart
+    p @current_cart.cart_items.length
+    p '*' * 100
+
+    # @cart_item = CartItem.new
     @categories = Category.all
     @product = Product.find(params[:id])
+    @currentProduct = @product
     if @product.name == 'Growers Magic'
       @name = "Grower's Magic"
     end
