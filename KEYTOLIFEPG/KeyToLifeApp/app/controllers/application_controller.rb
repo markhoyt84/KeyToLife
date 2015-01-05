@@ -23,6 +23,7 @@ class ApplicationController < ActionController::Base
 
   def search
     @categories = Category.all
+    @search_term = params[:keyword]
     @keyword = params[:keyword].downcase
     @upkey = @keyword.capitalize!
     @descriptions = []
@@ -33,20 +34,25 @@ class ApplicationController < ActionController::Base
     @categories_search = Category.where('name LIKE ? OR name LIKE ? OR description LIKE ? OR description LIKE ?', "%" + @keyword + "%", "%" + @upkey + "%", "%" + @keyword + "%", "%" + @upkey + "%").all
     @proddesc.each do |prod|
       prod.description.attributes.each do |key, value|
-        if value.class == String && value.include?(@keyword || @upkeyword)
+        if (value =~ /#{Regexp.escape(@keyword)}/i) != nil
         p '&' * 100
         @descriptions << prod
       end
       end
     end
     @products_list = @products.where('size' => '2 oz.')
-    p '*' * 100
+    @descriptions.each do |prod|
+      if prod.size == '2 oz.' && @products_list.include?(prod) == false
+        @products_list << prod
+      end
+    end
     @all['products'] = @products_list
-    @all['categories'] = @categories
-    @all['descriptions'] = @descriptions
-    p @all
-  end
-
-  def results
+    @all['categories'] = @categories_search
+    @prod_length = @all['products'].length
+    @cat_length = @all['categories'].length
+    @result_length = @prod_length + @cat_length
+    if @result_length == 0
+        flash.now[:notice] = "No Search Results Found for:" + "#{params[:keyword]}"
+    end
   end
 end

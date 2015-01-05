@@ -6,9 +6,9 @@
   <div class='row'>
     <div class="mobile_menu col span_5 search_icon">
       <form action='/search' type="get">
-      <!--   <input name="utf8" type="hidden" value="&#x2713;" /> -->
-        <input id='search_form' name='keyword' type="text">
-        <button id='search-icon' type='submit' class='inactive'><i class="fa fa-search"></i>Search</button>
+        <input name="utf8" type="hidden" value="&#x2713;" />
+        <input id='search_form' name='keyword' type="text" required>
+        <button id='search-icon' type='submit' class='inactive'><span id='search-icon-text'><i class="fa fa-search"></i>Search</span></button>
       </form>
     </div>
     <div class="col span_2 logo">
@@ -83,6 +83,7 @@
       });
     };
   });
+
   $(window).scroll(function() {
     $('#navbar-container').css('top', $(this).scrollTop() + "px");
 });

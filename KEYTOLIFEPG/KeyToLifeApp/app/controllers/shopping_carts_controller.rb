@@ -23,29 +23,6 @@ class ShoppingCartsController < ApplicationController
       @customer = User.find(session[:user_id])
       @new_order = Order.create(:customer_id => @customer.id, :total => @current_cart.total)
     end
-    # p '*' * 100
-    # p @new_order
-    # p '*' * 100
-    # t.integer  "customer_id"
-    # t.decimal  "total",                  precision: 8, scale: 2
-    # t.decimal  "shipping_cost",          precision: 8, scale: 2
-    # t.decimal  "tax",                    precision: 8, scale: 2
-    # t.decimal  "grand_total",            precision: 8, scale: 2
-    # t.string   "status",                                         default: "Processing"
-    # t.string   "first_name"
-    # t.string   "last_name"
-    # t.string   "company"
-    # t.string   "billing_address"
-    # t.string   "billing_address_city"
-    # t.string   "billing_address_state"
-    # t.string   "billing_address_zip"
-    # t.string   "shipping_address"
-    # t.string   "shipping_address_city"
-    # t.string   "shipping_address_state"
-    # t.string   "shipping_address_zip"
-    # t.string   "telephone"
-    # t.datetime "created_at"
-    # t.datetime "updated_at"
   end
 
 

@@ -1,13 +1,13 @@
-<h1>Search Results:</h1>
+<h1 class='ta-c'>Search Results:</h1>
 <div class='row'>
-  <div class='col span_12 debug'>
-    <table>
+  <div class='col span_12 search_table_div'>
+    <table id='search_table_filters'>
       <tr>
-        <td id='all' class='debug search_filter'>All</td><td id='products' class='debug search_filter'>Products</td><td id='categories' class='debug search_filter'>Categories</td><td id='videos' class='debug search_filter'>Videos</td><td id='blog' class='debug search_filter'>Blog</td>
+        <td id='all' class='search_filter'>All</td><td id='products' class='search_filter'>Products</td><td id='categories' class='search_filter'>Categories</td><td id='videos' class='search_filter'>Videos</td><td id='blog' class='search_filter'>Blog</td>
       </tr>
     </table>
   </div>
-  <div class='col span_12 debug search_results'>
+  <div class='col span_12 search_results'>
     <%= render 'all_search_index' %>
   </div>
 </div>
