@@ -1,11 +1,16 @@
+<div id='login_modal_background'>
+  <%= render 'shopping_carts/proceed_modal' %>
+</div>
+
 <div id="nav" class='navbar-container'>
   <div class='row'>
     <div class="mobile_menu col span_5 search_icon">
-      <form>
-        <input id='search_form' type="text">
-        <a id='search-icon' href='#'><i class="fa fa-search"></i>Search</a>
+      <form action='/search' type="get">
+      <!--   <input name="utf8" type="hidden" value="&#x2713;" /> -->
+        <input id='search_form' name='keyword' type="text">
+        <button id='search-icon' type='submit' class='inactive'><i class="fa fa-search"></i>Search</button>
       </form>
-    </div> <a href='/'>
+    </div>
     <div class="col span_2 logo">
       <%= image_tag 'keytolifeheader.jpg', :class => 'logo_image' %>
     </div>
@@ -13,7 +18,12 @@
     <div class='col span_1 emptycol'></br>
     </div>
     <div class="mobile_menu col span_1 poop">
-      <a href=''>Log In</a>
+      <% if user_signed_in? %>
+        <% @name = current_user.first_name.capitalize + " " + current_user.last_name[0].upcase + "." %>
+        <%= link_to @name, destroy_session_path(:user), :method => :delete %>
+      <% else %>
+        <a id='log_in_sign_up_button' href='#'>Log In</a>
+      <% end %>
     </div>
     <div class="mobile_menu col span_1 poop">
       <a href=''>Contact</a>
@@ -43,17 +53,35 @@
         <input id='searched_form' type="text">
         <a id='searched-icon' href='#'><i class="fa fa-search"></i>Search</a>
       </form></li>
-    <li><a class='c-w' href='#'>Log In</a></li>
+    <% if user_signed_in? %>
+      <li><a class='c-w' href='#'>Log Out</a></li>
+    <% else %>
+    `<li><a class='c-w' href='#'>Log In</a></li>
+    <% end %>
     <li><a class='c-w' href='#'>Contact Us</a></li>
   </ul>
 </div>
 </div>
 <script>
-  $('#search-icon').on('click', function(){
-    $(this).css('float', 'center');
-    $('#search_form').animate({
+  $('#search-icon').on('click', function(e){
+    var button = $(this)
+    if($(button).hasClass('inactive')){
+      var button = $(this)
+      e.preventDefault();
+      $(this).css('float', 'center');
+      $(this).removeClass('inactive');
+      $('#search_form').animate({
                  width: 'show'
              });
+      $(button).removeClass('inactive');
+    }else{
+      $.ajax({
+        url: '/search',
+        method: 'get',
+      }).done(function(data){
+        console.log(data)
+      });
+    };
   });
   $(window).scroll(function() {
     $('#navbar-container').css('top', $(this).scrollTop() + "px");
@@ -79,5 +107,23 @@
   }, function(){
     $('.current_cart').css('display', 'none')
   });
+
+  $('#log_in_sign_up_button').on('click', function(){
+    $('#shipping_form').toggle();
+  });
+
+  $('#log_in_sign_up_button').on('click', function(){
+    $('#login_modal_background').css('visibility', 'visible');
+    $('#full_modal_title').text('Key-To-Life');
+    // $('.logo_image').css('visibility', 'visible');
+    // $('.logo').css('display', 'block');
+    showLogoImage();
+    $('#proceed_modal').slideDown('fast');
+  });
+
+  $('.new_customer').hide();
+
+  switchNew();
+  switchReturning();
 
 </script>

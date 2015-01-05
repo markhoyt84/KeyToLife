@@ -1,0 +1,27 @@
+<h1>Search Results:</h1>
+<div class='row'>
+  <div class='col span_12 debug'>
+    <table>
+      <tr>
+        <td id='all' class='debug search_filter'>All</td><td id='products' class='debug search_filter'>Products</td><td id='categories' class='debug search_filter'>Categories</td><td id='videos' class='debug search_filter'>Videos</td><td id='blog' class='debug search_filter'>Blog</td>
+      </tr>
+    </table>
+  </div>
+  <div class='col span_12 debug search_results'>
+    <%= render 'all_search_index' %>
+  </div>
+</div>
+
+<script>
+$('.search_filter').on('click', function(){
+  var tab = $(this).attr('id');
+  if(tab === 'all'){
+    $('.search_results').html("<%= j render 'all_search_index' %>")
+  }else if(tab === 'products'){
+    $('.search_results').html("<%= j render 'products_search_index' %>")
+  }else if(tab === 'categories'){
+    $('.search_results').html("<%= j render 'category_search_index' %>")
+  }
+})
+
+</script>

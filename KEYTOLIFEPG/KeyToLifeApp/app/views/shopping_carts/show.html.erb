@@ -1,3 +1,7 @@
+<div id='modal_background'>
+  <%= render 'proceed_modal' %>
+</div>
+
 <h1>My Cart</h1>
 <div class='cart_page row'>
   <div class='row cart_title_row'>
@@ -19,16 +23,37 @@
     <% end %>
   <div class= 'cart_page row cart_totals'>
     <div class='col span_3 cart_title'>
-    <%= link_to 'Destroy', @current_cart, method: :delete, data: { confirm: 'Are you sure you want to delete your cart?  These changes cannot be undone.' } %>
+      <h2>TOTALS:</h2>
+    </div>
+    <div class='col span_3 cart_title'>
+      <h2><%= link_to 'Delete Cart', @current_cart, method: :delete, data: { confirm: 'Are you sure you want to delete your cart?  These changes cannot be undone.' } %></h2>
     </div>
     <div class='col span_3 cart_title'>
       <h2 id='num_item_cart_page'></h2>
     </div>
     <div class='col span_3 cart_title'>
-      <h2></h2>
-    </div>
-    <div class='col span_3 cart_title'>
       <h2 id='my_cart_total'><%= number_to_currency(@current_cart.total) %></h2>
     </div>
   </div>
+  <div class='row'>
+    <div class='col span_4'>
+      <h1></h1>
+    </div>
+    <div class='col span_4 checkout_button_div'>
+      <button id='checkout' class='checkout-button link_to_button'>Proceed to Checkout</button>
+    </div>
+    <div class='col span_4'>
+      <h1></h1>
+    </div>
+  </div>
 </div>
+
+<script>
+$('#checkout').on('click', function(){
+  $('#login_modal_background').css('visibility', 'visible');
+  $('#proceed_modal').slideDown('fast');
+  $('.login_to_order').val('Proceed to Checkout');
+  $('.new_customer').html("<%= j (render 'orders/form') %>");
+  showLogoImage();
+});
+</script>

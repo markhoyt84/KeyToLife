@@ -60,18 +60,23 @@
   margin-bottom: 1em;
 }
 
+.footer_col {
+  text-align: center;
+}
+
+
 #index_main {
   margin-bottom: 2em;
 }
 
 #subscribe-button {
-  margin-right: 1em;
-  float:right;
+display: inline-block;
 }
 
 #email-input {
   height: 26px;
   margin-top: 0px;
+  vertical-align: top;
 }
 
 ul.topnav {

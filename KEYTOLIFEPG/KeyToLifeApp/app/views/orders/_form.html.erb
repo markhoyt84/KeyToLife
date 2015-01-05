@@ -1,0 +1,32 @@
+<%= form_for(@order) do |f| %>
+  <% if @order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+      <ul>
+      <% @order.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <p>
+      <%= f.label :email %><br>
+      <%= f.text_field :email, placeholder: 'me@myemail.com', required: true %>
+    </p>
+    <p>
+      <%= f.label 'Shipping Zip Code' %><br>
+      <%= f.text_field :shipping_address_zip, placeholder: 'ex. 12345' %>
+    </p>
+    <p>
+        <span class='new_user_form'>This is a:</span><br>
+        <%= radio_button_tag(:location, "Residential") %>
+        <%= label_tag(:location_res, "Residential Address") %><br>
+        <%= radio_button_tag(:location, "Business") %>
+        <%= label_tag(:location_bus, "Business Address") %>
+    </p>
+    <%= f.submit %>
+  </div>
+<% end %>

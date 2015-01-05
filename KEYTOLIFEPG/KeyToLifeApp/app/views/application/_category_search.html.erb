@@ -1,0 +1,13 @@
+<div class='row debug search_thumb_div'>
+<%= link_to category_path(category) do %>
+<div class='row'>
+<%=image_tag(category.photos[0].url, :class => 'search_thumb')%>
+</div>
+<div class='row debug'>
+<p class='fl-nd d-ib'>
+<h3><%= category.name %><small>(category)</small></h3>
+<%= category.description %>
+</p>
+</div>
+</div>
+<% end %>

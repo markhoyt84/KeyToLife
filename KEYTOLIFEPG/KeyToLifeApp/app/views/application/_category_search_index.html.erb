@@ -1,0 +1,6 @@
+<h2>Categories:</h2>
+<% @categories_search.each do |category| %>
+  <div class='span_3 col products_rows debug'>
+    <%= render partial: 'category_search', locals: {category: category} %>
+  </div>
+<% end %>

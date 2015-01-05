@@ -159,7 +159,7 @@ td.img-list {
 }*/
 
 .container {
-  padding-bottom: 2em;
+  padding-bottom: 1em;
   margin-bottom: 2em;
 }
 
@@ -337,6 +337,7 @@ td.img-list {
 
 #index_main {
   clear: both;
+  margin-bottom: 0em;
 }
 
 #slider1_container{
@@ -418,4 +419,77 @@ textarea:focus, input:focus, input[type]:focus, .uneditable-input:focus {
 
 .debugged {
     border: 1px solid black;
+}
+
+/*Login Modal*/
+
+#login_modal_background {
+  visibility: hidden;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  position: fixed;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 99999;
+}
+
+#close_modal {
+  float: right;
+  font-size: 2.0em;
+  margin-top: 8px;
+  margin-right: 5px;
+}
+
+.returning_customer {
+  text-align: center;
+  padding-top: 1em;
+}
+
+.new_customer {
+  text-align: center;
+  padding-top: 1em;
+}
+
+.full_modal_title {
+  font-family: 'Audiowide', Arial;
+  text-shadow: 0 0 8px #c7ff91;
+}
+
+.green_to_white {
+  background: -webkit-linear-gradient(#D0FE71, white); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(#D0FE71, white); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(#D0FE71, white); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#D0FE71, white); /* Standard syntax (must be last) */
+}
+
+/*Subscribe Flash Notice*/
+
+#subscribe_notice {
+  color: red;
+}
+
+/*search results page*/
+
+.search_thumb {
+  width: 40%;
+  height: 50%;
+}
+
+.search_filter {
+  width: auto;
+  padding-left: 1em;
+  padding-right: 1em;
+  font-family: 'Audiowide', Arial;
+  box-shadow: 0 0 5px black;
+  background-color: #c7ff91;
+}
+
+.search_filter:hover {
+  cursor: pointer;
+  cursor: hand;
+}
+
+.search_thumb_div {
+  text-align: center;
 }

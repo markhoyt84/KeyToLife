@@ -1,0 +1,20 @@
+<br>
+<span class='new_user_form'>Email Address</span><br>
+<%= text_field(:user, :email, placeholder: 'email...') %><br>
+      <br>
+<span class='new_user_form'>Zip Code</span><br>
+<%= text_field(:user, :zip_code, placeholder: 'zip code...') %><br>
+      <br>
+<span class='new_user_form'>This is a:</span><br>
+<%= radio_button_tag(:location, "child") %>
+<%= label_tag(:location_res, "Residential Address") %>
+<br>
+<%= radio_button_tag(:location, "adult") %>
+<%= label_tag(:location_bus, "Business Address") %><br>
+<%= link_to 'Proceed To Checkout', purchase_shopping_cart_path(@current_cart), :class => 'temp_user' %>
+
+<script>
+$('.temp_user').on('click', function(){
+
+});
+</script>

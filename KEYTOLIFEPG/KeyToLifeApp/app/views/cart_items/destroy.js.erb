@@ -5,4 +5,8 @@ $('span#cartlength').text(newNum);
 
 $('#currentest_cart').html("<%= j (render(:partial => 'shopping_carts/modal', :locals => {:current_cart => @current_cart})).html_safe %>");
 
-$('#my_cart_total').text('<%= @total %>');
+// $('#my_cart_total').text('$<%= @total %>');
+var total = $('#my_cart_total');
+total.text('<%= @total %>');
+var newTotal = Number(total.text()).toFixed(2);
+total.text('$' + newTotal);

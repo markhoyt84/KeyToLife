@@ -1,0 +1,30 @@
+<div id='proceed_modal' class='row'>
+  <div class='col span_6'>
+    <h1 id='full_modal_title' class='full_modal_title'>Proceed to Checkout</h1>
+  </div>
+  <div class='col span_6' >
+    <span id='close_modal'><i class="fa fa-times"></i></span>
+  </div>
+  <div class='col span_12'>
+    <div class='col span_6 proceed_modal_title_returning green_to_white'>
+      <h4>Returning Customers</h4>
+    </div>
+    <div class='col span_6 proceed_modal_title_new'>
+      <h4>New Customers</h4>
+    </div>
+  </div>
+  <div class='col span_12 returning_customer'>
+    <%= render 'devise/sessions/new' %>
+  </div>
+  <div class='col span_12 new_customer'>
+    <%= render 'devise/registrations/new' %>
+  </div>
+</div>
+
+<script>
+  $('#close_modal').on('click', function(){
+    $('#login_modal_background').css('visibility', 'hidden');
+    // $('.new_customer').css('visibility', 'hidden');
+    switchReturningTab($('.proceed_modal_title_returning'));
+  });
+</script>

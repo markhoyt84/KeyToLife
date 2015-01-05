@@ -27,7 +27,6 @@ class ProductsController < ApplicationController
     p @current_cart
     p @current_cart.cart_items.length
     p '*' * 100
-
     # @cart_item = CartItem.new
     @categories = Category.all
     @product = Product.find(params[:id])

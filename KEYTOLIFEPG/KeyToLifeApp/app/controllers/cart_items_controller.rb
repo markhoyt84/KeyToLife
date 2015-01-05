@@ -1,7 +1,7 @@
 class CartItemsController < ApplicationController
   before_action :set_cart_item, only: [:show, :edit, :update, :destroy]
 
-  respond_to :html
+  respond_to :html, :json
 
   def index
     @cart = ShoppingCart.find(session[:cart_id])
@@ -28,19 +28,19 @@ class CartItemsController < ApplicationController
     count = @cart.length
     if count == 0
       @cart << @product
-      @shopping_cart = ShoppingCart.create(total: @product.MSRP, customer_id: session[:user_id], item_count: 1)
+      @shopping_cart = ShoppingCart.find(session[:current_cart])
+      @shopping_cart.total = @product.MSRP
+      @shopping_cart.customer_id = session[:user_id]
+      @shopping_cart.item_count = 1
       @newItem = CartItem.create(name: @product.name, size: @product.size, sku: @product.sku, price: @product.MSRP, category_id: @product.category_id, description_id: @product.description_id, shopping_cart_id: @shopping_cart.id)
         session[:current_cart] = @shopping_cart.id
+      @shopping_cart.save
     else
       @cart << @product
       @shopping_cart = ShoppingCart.find(session[:current_cart])
       @shopping_cart.item_count = @cart.length
       items = @shopping_cart.cart_items
-      total = @shopping_cart.total
       @shopping_cart.total += @product.MSRP
-      p "*" * 100
-      p @shopping_cart.item_count
-      p "*" * 100
       @newItem = CartItem.create(name: @product.name, size: @product.size, sku: @product.sku, price: @product.MSRP, category_id: @product.category_id, description_id: @product.description_id, shopping_cart_id: @shopping_cart.id)
       @shopping_cart.save
     end
@@ -48,7 +48,7 @@ class CartItemsController < ApplicationController
     respond_to do |format|
       if @newItem.save
         @current_cart = @shopping_cart
-       format.js { flash[:notice] = "Successfully added to cart"}
+        format.js { flash.now[:notice] = "Successfully added to cart"}
       else
         format.js { flash[:notice] = "Item could not be added to cart"}
       end
@@ -70,6 +70,7 @@ class CartItemsController < ApplicationController
     @cart.save
     @cart_items = session[:cart_items]
     @total = @cart.total
+    puts @total
 
     @cart_item.destroy
 

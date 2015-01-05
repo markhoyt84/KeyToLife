@@ -110,6 +110,7 @@ span#current_price{
   color: white;
   transform: scale(1.1);
   box-shadow: #37FF00 0px 0px 10px 1px;
+  text-shadow: 0 0 2px black;
 }
 
 .prod_description_tab_reviews {
@@ -164,4 +165,18 @@ span#current_price{
 
 .product_display {
   margin-top: 30px;
+}
+
+p#notice {
+  color: red;
+}
+
+.show_tab {
+  background-color: white;
+}
+
+.show_tab:hover {
+  text-shadow: 0 0 2px black;
+  cursor: pointer;
+  cursor: hand;
 }

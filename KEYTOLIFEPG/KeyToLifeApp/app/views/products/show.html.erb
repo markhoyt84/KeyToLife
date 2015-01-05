@@ -17,25 +17,25 @@
 </div>
 <div class='row'>
   <div class='col span_3'><p></p></div>
-  <div class='col span_2 prod_description_tab_description'>
+  <div class='col span_2 prod_description_tab_description show_tab green_to_white'>
     <h2>Description</h2>
   </div>
-  <div class='col span_2 prod_description_tab_directions'>
+  <div class='col span_2 prod_description_tab_directions show_tab'>
     <h2>Directions</h2>
   </div>
-  <div class='col span_2 prod_description_tab_reviews'>
+  <div class='col span_2 prod_description_tab_reviews show_tab'>
     <h2>Reviews</h2>
   </div>
   <div class='col span_3'></div>
 </div>
 <div class='row'>
   <div class='col span_3'><p></p></div>
-  <div class='col span_6 prod_description_tab'>
+  <div class='col span_6 prod_description_tab bgc-w'>
   <%= @description.description %><br>
   <br>
   <%= @description.love %>
   </div>
-  <div class='col span_6 prod_directions_tab' style="display: none;">
+  <div class='col span_6 prod_directions_tab bgc-w' style="display: none;">
   <%= @description.directions %>
   <% if @description.derived != nil %>
   <h4>Derived From: </h4><%= @description.derived %>
@@ -44,7 +44,7 @@
   <h4>Contains: </h4><%= @description.ingredient %>
   <% end %>
   </div>
-  <div class='col span_6 prod_reviews_tab' style="display: none;">
+  <div class='col span_6 prod_reviews_tab bgc-w' style="display: none;">
     <h4>Reviews may only be left by customers who have purchased <%= @product.name %>.</h4>
   </div>
   <div class='col span_3'></div>
@@ -62,6 +62,7 @@ $('#cart_item_id').change(function(){
 });
 
 $('.prod_description_tab_reviews').on('click', function(){
+  switchActive($(this));
   $('.prod_description_tab').css('display', 'none');
   $('.prod_description_tab_description').css('border-bottom', '1px solid black');
   $('.prod_reviews_tab').css('display', 'block');
@@ -71,6 +72,7 @@ $('.prod_description_tab_reviews').on('click', function(){
 });
 
 $('.prod_description_tab_directions').on('click', function(){
+  switchActive($(this));
   $('.prod_description_tab').css('display', 'none');
   $('.prod_description_tab_description').css('border-bottom', '1px solid black');
   $('.prod_reviews_tab').css('display', 'none');
@@ -80,6 +82,7 @@ $('.prod_description_tab_directions').on('click', function(){
 })
 
 $('.prod_description_tab_description').on('click', function(){
+  switchActive($(this));
   $('.prod_description_tab').css('display', 'block');
   $('.prod_reviews_tab').css('display', 'none');
   $('.prod_description_tab_reviews').css('border-bottom', '1px solid black');

@@ -1,0 +1,39 @@
+<p class='info_box'>Shipping available to United States and its territories only.</p>
+<%= form_for(@new_order) do |f| %>
+  <% if @new_order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@new_order.errors.count, "error") %> prohibited this shopping_cart from being saved:</h2>
+
+      <ul>
+      <% @new_order.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="actions">
+    <p>
+      <%= f.label 'Ship to Billing Address' %>
+      <%= f.check_box(@ship_to_bill, {checked: false}) %>
+    </p>
+    <p>
+    <%= f.label :address %>
+    <%= f.text_field :shipping_address, :required => true%>
+    </p>
+    <p>
+    <%= f.label :city %>
+    <%= f.text_field :shipping_address_city, :required => true%>
+    </p>
+    <p>
+    <%= f.label :state %>
+    <%= f.text_field :shipping_address_state, :required => true %>
+    </p>
+    <p>
+    <%= f.label 'Zip Code' %>
+    <%= f.text_field :shipping_address_zip, :required => true %>
+    </p>
+    <%= f.submit %>
+  </div>
+<% end %>

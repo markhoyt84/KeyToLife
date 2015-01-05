@@ -9,6 +9,7 @@ class WelcomeController < ApplicationController
   end
 
   def index
+    @subscriber = Subscriber.new
     @categories = Category.all
     if session[:user_id] == 'guest'
       if session[:current_cart] == nil
@@ -29,5 +30,9 @@ class WelcomeController < ApplicationController
   end
 
   def about
+  end
+
+  def search_form
+
   end
 end

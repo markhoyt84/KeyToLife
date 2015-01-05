@@ -1,0 +1,16 @@
+<h2>All Results:</h2>
+    <% @all.each do |key, value| %>
+      <% if key == 'products' %>
+        <% value.each do |product| %>
+          <div class='span_3 col products_rows debug'>
+            <%= render partial: 'product_search', locals: {product: product} %>
+          </div>
+        <% end %>
+      <% elsif key == 'categories' %>
+        <% value.each do |category| %>
+          <div class='span_3 col products_rows debug'>
+            <%= render partial: 'category_search', locals: {category: category} %>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>

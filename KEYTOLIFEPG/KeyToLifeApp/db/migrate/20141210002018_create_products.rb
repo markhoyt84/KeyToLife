@@ -4,9 +4,9 @@ class CreateProducts < ActiveRecord::Migration
       t.string :name
       t.string :size
       t.string :sku
-      t.float :Dist
-      t.float :WS
-      t.float :MSRP
+      t.decimal :Dist, :precision => 8, :scale => 2
+      t.decimal :WS, :precision => 8, :scale => 2
+      t.decimal :MSRP, :precision => 8, :scale => 2
       t.references :category
       t.references :description
 

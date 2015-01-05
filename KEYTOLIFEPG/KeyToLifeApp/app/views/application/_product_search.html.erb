@@ -1,0 +1,12 @@
+<div class='row debug search_thumb_div'>
+  <div class='row'>
+  <%= image_tag(product.photos.first.url, :class => 'search_thumb')%>
+  </div>
+  <div class='row debug'>
+  <p class='fl-nd d-ib'>
+  <h3><%= product.name %> <small>(product)</small></h3>
+<%= product.description.headline %>
+<%= product.description.range %>
+</p>
+</div>
+</div>
