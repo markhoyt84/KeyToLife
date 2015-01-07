@@ -1,4 +1,4 @@
-<h2 class='ta-c'>Products: <%= @products_list.length %> results found in products for <span class='color_red'><%= @search_term %></span></h2>
+<h2 class='ta-c'><%= @products_list.length %> results found in products for <span class='color_red'><%= @search_term %></span></h2>
 <% @products_list.each do |product| %>
   <div class='span_3 col products_rows'>
     <%= render partial: 'product_search', locals: {product: product} %>

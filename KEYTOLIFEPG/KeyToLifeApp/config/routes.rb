@@ -3,7 +3,11 @@ Rails.application.routes.draw do
   resources :subscribers
 
   devise_for :admins
-  resources :orders
+  resources :orders do
+    member do
+      get 'payments'
+    end
+  end
 
   resources :shopping_carts do
       member do

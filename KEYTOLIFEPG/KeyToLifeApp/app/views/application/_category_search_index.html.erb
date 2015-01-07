@@ -1,4 +1,4 @@
-<h2 class='ta-c'>Categories: <%= @categories_search.length %> results found in categories for <span class='color_red'><%=@search_term %></span></h2>
+<h2 class='ta-c'><%= @categories_search.length %> results found in categories for <span class='color_red'><%=@search_term %></span></h2>
 <% @categories_search.each do |category| %>
   <div class='span_3 col products_rows'>
     <%= render partial: 'category_search', locals: {category: category} %>

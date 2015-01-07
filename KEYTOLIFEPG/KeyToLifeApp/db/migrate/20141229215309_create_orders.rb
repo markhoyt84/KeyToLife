@@ -2,10 +2,10 @@ class CreateOrders < ActiveRecord::Migration
   def change
     create_table :orders do |t|
       t.references :shopping_cart
-      t.references :customer, :default => nil
+      t.references :user, :default => 'guest'
       t.decimal :total, :precision => 8, :scale => 2
-      t.decimal :shipping_cost, :precision => 8, :scale => 2
-      t.decimal :tax, :precision => 8, :scale => 2
+      t.decimal :shipping_cost, :precision => 8, :scale => 2, :default => 0
+      t.decimal :tax, :precision => 8, :scale => 2, :default => 0
       t.decimal :grand_total, :precision => 8, :scale => 2
       t.string :status, :default => 'Processing'
       t.string :email

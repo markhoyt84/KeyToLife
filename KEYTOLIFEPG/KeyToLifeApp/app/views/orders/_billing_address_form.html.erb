@@ -1,5 +1,5 @@
 <div class='row'>
-<%= form_for(@order) do |f| %>
+<%= form_for @order, :remote => true do |f| %>
   <% if @order.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@order.errors.count, "error") %> prohibited this shopping_cart from being saved:</h2>
@@ -53,30 +53,31 @@
     <p class='info_box'>Shipping available to United States and its territories only.</p>
     <p>
       <%= f.label 'Ship to Billing Address' %>
-      <%= f.check_box(@ship_to_bill, {checked: false}) %>
+      <%= check_box('ship_to_billing', 'yes') %>
     </p>
     <div id='shipping_form'>
     <p>
     <%= f.label :address %>
-    <%= f.text_field :shipping_address, :required => true%>
+    <%= f.text_field :shipping_address %>
     </p>
     <p>
     <%= f.label :city %>
-    <%= f.text_field :shipping_address_city, :required => true%>
+    <%= f.text_field :shipping_address_city %>
     </p>
     <p>
     <%= f.label :state %>
-    <%= f.text_field :shipping_address_state, :required => true %>
+    <%= f.text_field :shipping_address_state  %>
     </p>
     <p>
     <%= f.label 'Zip Code' %>
-    <%= f.text_field :shipping_address_zip, :required => true %>
+    <%= f.text_field :shipping_address_zip  %>
     </p>
     </div>
 </div>
+  <% if current_user == nil %>
   <div class='row registration_row'>
     <div class='col span_12 register_on_checkout'>
-      <h3>Register Now <span class='smaller'>(optional)</span></h3>
+      <h2>Register Now <span class='smaller'>(optional)</span></h2>
       <hr>
       <p><small>Registration is optional, but it will allow you to save address information so you don't have to re-type it next time.</small></p>
       <br>
@@ -86,36 +87,17 @@
       <%= f.label 'Password' %>
       <%= text_field(:user, :password, placeholder: 'password...', type: :password) %>
     </div>
+  <% end %>
     <div class='col span_12 register_on_checkout'>
-      <h3>Sign Up for our newsletter</h3>
-    </div>
-    <div class='row newsletter_signup'>
-      <div class='span_12'>
-
-      </div>
+      <h2>Sign Up for our newsletter</h2>
+      <hr>
+      <p>Enjoy weekly news, special promotions and instructional videos.</p>
+        <p>Email addresses are never shared with outside sources.</p>
+        <%= check_box('sign_up_for_newsletter', 'yes') %><small>Sign up for the Key-To-Life weekly newsletter.</small>
     </div>
   </div>
-
-  <%= f.submit %>
+   <div class="col span_12 registration_row regisration_submit">
+    <%= f.submit 'Continue', :class => 'checkout-button link_to_button' %>
+  </div>
+</div>
 <% end %>
-<!--
-    # t.integer  "customer_id"
-    # t.decimal  "total",                  precision: 8, scale: 2
-    # t.decimal  "shipping_cost",          precision: 8, scale: 2
-    # t.decimal  "tax",                    precision: 8, scale: 2
-    # t.decimal  "grand_total",            precision: 8, scale: 2
-    # t.string   "status",                                         default: "Processing"
-    # t.string   "first_name"
-    # t.string   "last_name"
-    # t.string   "company"
-    # t.string   "billing_address"
-    # t.string   "billing_address_city"
-    # t.string   "billing_address_state"
-    # t.string   "billing_address_zip"
-    # t.string   "shipping_address"
-    # t.string   "shipping_address_city"
-    # t.string   "shipping_address_state"
-    # t.string   "shipping_address_zip"
-    # t.string   "telephone"
-    # t.datetime "created_at"
-    # t.datetime "updated_at" -->

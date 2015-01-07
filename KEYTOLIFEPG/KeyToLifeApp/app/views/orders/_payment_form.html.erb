@@ -1,0 +1,86 @@
+<div class='row gutters debug'>
+<div class='col span_9'
+<h1>Order Details:</h1>
+<table class='cart_table'>
+  <tbody>
+  <tr>
+    <td class='size'>SIZE</td><td class='item_name'>NAME</td><td class='cost'>PRICE</td>
+  </tr>
+  <tr>
+    <td><hr></td><td><hr></td><td><hr></td>
+  </tr>
+<% @current_cart.cart_items.each do |item| %>
+    <%= render partial: 'cart_items/show', locals: {item: item} %>
+<% end %>
+</tbody>
+</table>
+<table class='total_table'>
+  <tbody>
+  <tr>
+    <td><hr></td><td><hr></td><td><hr></td>
+  </tr>
+  <tr>
+    <td class='size'>SUBTOTAL:</td><td class='item_name'><p></p></td><td class='cost'><%= number_to_currency(@order.total) %></td>
+  </tr>
+  <tr>
+    <td class='size'>TAX:</td><td class='item_name'><p></p></td><td class='cost'><%= number_to_currency(0) %></td>
+  </tr>
+  <tr>
+    <td class='size'>SHIPPING AND HANDLING:</td><td class='item_name'><p></p></td><td class='cost'><%= number_to_currency(0) %></td>
+  </tr>
+  </tbody>
+</table>
+</div>
+<div class='col span_3 debug coupon'>
+  <div class='row debug'>
+  <h5>Enter coupon code here:</h5>
+  <form method='post' action='/order/coupon'>
+    <input type='text' name='coupon[code]'>
+    <input type='submit' value='Apply Coupon'>
+  </form>
+  </div>
+  <div class='row debug'>
+    <h5>Order Notes:</h5>
+    <small>For need-to-know information such as, "Do not include invoice in box, this is a gift", "Please leave package at backdoor", or anything else you'd like us to read before shipping your order.</small>
+  </div>
+</div>
+</div>
+<div class='row gutters'>
+  <div class='col span_3 debug'>
+    <h3>Billing Address:</h3>
+    <ul class='address_list'>
+      <li><%= @order.first_name %></li>
+      <li><%= @order.last_name %></li>
+      <li><%= @order.billing_address %></li>
+      <li><%= @order.billing_address_city %>, <%= @order.billing_address_state %>, <%= @order.billing_address_zip %></li>
+      <li>T: <%= @order.telephone %></li>
+    </ul>
+  </div>
+  <div class='col span_3 debug'>
+    <h3>Shipping Address:</h3>
+    <ul class='address_list'>
+      <li><%= @order.first_name %></li>
+      <li><%= @order.last_name %></li>
+      <li><%= @order.shipping_address %></li>
+      <li><%= @order.shipping_address_city %>, <%= @order.shipping_address_state %>, <%= @order.shipping_address_zip %></li>
+      <li>T: <%= @order.telephone %></li>
+    </ul>
+  </div>
+  <div class='col span_3 debug'>
+    <h3>Order Totals:</h3>
+    <table>
+      <tr>
+        <td>Subtotal:</td><td><%= number_to_currency(@order.total) %></td>
+      </tr>
+      <tr>
+        <td>Discount:</td><td><%= number_to_currency(@order.total) %></td>
+      </tr>
+      <tr>
+        <td>Tax:</td><td><%= number_to_currency(@order.tax) %></td>
+      </tr>
+      <tr>
+        <td>Grand Total:</td><%= number_to_currency(@order.grand_total) %></td>
+      </tr>
+    </table>
+  </div>
+</div>

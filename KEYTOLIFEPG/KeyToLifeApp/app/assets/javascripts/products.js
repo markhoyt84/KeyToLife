@@ -6,4 +6,13 @@ function switchActive(){
     $(tabs[i]).removeClass('green_to_white')
   };
   $(that).addClass('green_to_white');
-}
+};
+
+function changeText(el){
+  $(el).change(function(){
+  var itemPrice = $('option:selected').attr('data');
+  var itemSKU = $('option:selected').attr('sku');
+  $('#current_price').text("$" + itemPrice);
+  $('#current_SKU').text("SKU: " + itemSKU);
+  });
+};

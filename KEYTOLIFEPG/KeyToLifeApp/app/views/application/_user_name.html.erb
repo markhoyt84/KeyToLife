@@ -1,0 +1,6 @@
+<% if user_signed_in? || @current_user %>
+        <% @name = @current_user.first_name.capitalize + " " + @current_user.last_name[0].upcase + "." %>
+        <%= link_to @name, destroy_session_path(:user), :method => :delete %>
+      <% else %>
+        <a id='log_in_sign_up_button' href='#'>Log In</a>
+<% end %>

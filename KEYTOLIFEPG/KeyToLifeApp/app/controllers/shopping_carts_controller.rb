@@ -36,9 +36,26 @@ class ShoppingCartsController < ApplicationController
   end
 
   def create
-    @shopping_cart = ShoppingCart.new(shopping_cart_params)
-    @shopping_cart.save
-    respond_with(@shopping_cart)
+    item_id = params[:product_id]
+    @cart = session[:cart_items]
+    @product = Product.find(item_id)
+    @shopping_cart = ShoppingCart.create(shopping_cart_params)
+    @cart << @product
+    @shopping_cart.total = @product.MSRP
+    @shopping_cart.customer_id = session[:user_id]
+    @shopping_cart.item_count = 1
+    @newItem = @shopping_cart.cart_items.create(name: @product.name, size: @product.size, sku: @product.sku, price: @product.MSRP, category_id: @product.category_id, description_id: @product.description_id, shopping_cart_id: @shopping_cart.id)
+        session[:current_cart] = @shopping_cart.id
+    respond_to do |format|
+      @cart_items = session[:cart_items]
+      if @shopping_cart.save
+        @current_cart = @shopping_cart
+        format.js { flash.now[:notice] = "Successfully added to cart"}
+      else
+        format.js { flash[:notice] = "Item could not be added to cart"}
+      end
+    end
+    @current_cart = @shopping_cart
   end
 
   def update

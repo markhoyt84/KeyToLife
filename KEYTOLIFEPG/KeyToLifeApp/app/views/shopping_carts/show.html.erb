@@ -49,11 +49,17 @@
 </div>
 
 <script>
+var user = $('.logged_in a').hasClass('logged_in_user');
+console.log(user)
+if(user == false){
 $('#checkout').on('click', function(){
   $('#login_modal_background').css('visibility', 'visible');
   $('#proceed_modal').slideDown('fast');
   $('.login_to_order').val('Proceed to Checkout');
   $('.new_customer').html("<%= j (render 'orders/form') %>");
   showLogoImage();
-});
+})
+}else{
+  $('.checkout_button_div').html("<%= j link_to 'Proceed to Checkout', new_order_path %>")
+}
 </script>

@@ -17,10 +17,10 @@
   </a>
     <div class='col span_1 emptycol'></br>
     </div>
-    <div class="mobile_menu col span_1 poop">
-      <% if user_signed_in? %>
+    <div class="mobile_menu col span_1 poop logged_in">
+      <% if current_user %>
         <% @name = current_user.first_name.capitalize + " " + current_user.last_name[0].upcase + "." %>
-        <%= link_to @name, destroy_session_path(:user), :method => :delete %>
+        <%= link_to @name, destroy_session_path(:user), :method => :delete, :class => 'logged_in_user' %>
       <% else %>
         <a id='log_in_sign_up_button' href='#'>Log In</a>
       <% end %>
@@ -29,7 +29,7 @@
       <a href=''>Contact</a>
     </div>
     <div class="mobile_menu col span_1 poop cart_link">
-      <% if @current_cart %>
+      <% if @current_cart && @current_cart.cart_items.length > 0 %>
       <%= link_to shopping_cart_path(@current_cart) do %>Cart (<span id='cartlength'><%= render 'cart_items/num_items' %></span>)<% end %>
       <% else %>
       <a href='#'>Cart (<span id='cartlength'><%= render 'cart_items/num_items' %></span>)</a>

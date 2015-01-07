@@ -1,17 +1,19 @@
-<%= form_for(@shopping_cart) do |f| %>
-  <% if @shopping_cart.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@shopping_cart.errors.count, "error") %> prohibited this shopping_cart from being saved:</h2>
-
-      <ul>
-      <% @shopping_cart.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+<%= form_for @current_cart, :remote => true do |f| %>
+  <table class='buy_form_table'>
+    <tr>
+    <td>
+    <%= f.label :item_id %><br>
+      <% array = [] %>
+      <% @products.each do |prod| %>
+      <% new_array = [prod.size, prod.id, { 'data' => prod.MSRP, 'sku' => prod.sku}] %>
+      <% array << new_array %>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <%= select_tag 'product_id', options_for_select(array) %>
+  </td>
+      <%= render 'products/sizes' %>
+  <td>
+    <%= f.submit 'BUY NOW', :class => 'buy_button' %>
+  </td>
+</tr>
+</table>
 <% end %>

@@ -76,10 +76,10 @@ ActiveRecord::Schema.define(version: 20141231164405) do
 
   create_table "orders", force: true do |t|
     t.integer  "shopping_cart_id"
-    t.integer  "customer_id"
+    t.integer  "user_id",                                        default: 0
     t.decimal  "total",                  precision: 8, scale: 2
-    t.decimal  "shipping_cost",          precision: 8, scale: 2
-    t.decimal  "tax",                    precision: 8, scale: 2
+    t.decimal  "shipping_cost",          precision: 8, scale: 2, default: 0.0
+    t.decimal  "tax",                    precision: 8, scale: 2, default: 0.0
     t.decimal  "grand_total",            precision: 8, scale: 2
     t.string   "status",                                         default: "Processing"
     t.string   "email"

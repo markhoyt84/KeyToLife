@@ -24,6 +24,10 @@ class WelcomeController < ApplicationController
       session[:user_id] = 'guest'
       session[:cart_items] = []
       session[:current_cart] = nil
+    else
+      cart_id = session[:current_cart]
+      get_cart
+      @items = @current_cart.cart_items
     end
     p session[:cart_items]
     p session[:current_cart]

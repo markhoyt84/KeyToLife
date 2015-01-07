@@ -11,7 +11,11 @@
 </div>
 <div class='product_info col span_6'>
   <p id="notice"><%= notice %></p>
-  <%= render 'cart_items/form' %>
+  <% if session[:current_cart] == nil %>
+    <%= render 'shopping_carts/form' %>
+  <% else %>
+    <%= render 'cart_items/form' %>
+  <% end %>
 </div>
 </div>
 </div>
@@ -53,13 +57,19 @@
 
 <script>
 var cartNum = parseInt($('#cartlength').text());
-$('#cartlength').text(" " + (cartNum - 1) + " ");
-$('#cart_item_id').change(function(){
+if(cartNum > 0 ){
+  $('#cartlength').text(" " + (cartNum - 1) + " ");
+}
+function changeText(el){
+  $(el).change(function(){
   var itemPrice = $('option:selected').attr('data');
   var itemSKU = $('option:selected').attr('sku');
   $('#current_price').text("$" + itemPrice);
   $('#current_SKU').text("SKU: " + itemSKU);
-});
+  });
+};
+changeText($('#product_id'));
+changeText($('#cart_item_id'));
 
 $('.prod_description_tab_reviews').on('click', function(){
   switchActive($(this));

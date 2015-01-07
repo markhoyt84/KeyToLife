@@ -3,7 +3,6 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   before_action :new_subscriber
-
   def about
     @categories = Category.all
   end
@@ -22,6 +21,7 @@ class ApplicationController < ActionController::Base
   end
 
   def search
+    @current_cart = ShoppingCart.find(session[:current_cart])
     @categories = Category.all
     @search_term = params[:keyword]
     @keyword = params[:keyword].downcase

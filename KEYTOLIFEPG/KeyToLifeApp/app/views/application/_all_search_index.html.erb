@@ -1,5 +1,4 @@
-<h2 class='ta-c'>All Results: <%= @result_length %> results found for <span class='color_red'><%=@search_term %></span></h2>
-    <%= notice %>
+<h2 class='ta-c'><%= @result_length %> results found for <span class='color_red'><%=@search_term %></span></h2>
     <% @all.each do |key, value| %>
       <% if key == 'products' %>
         <% value.each do |product| %>
