@@ -88,6 +88,7 @@
       <%= text_field(:user, :password, placeholder: 'password...', type: :password) %>
     </div>
   <% end %>
+  <% if @subscribed == false %>
     <div class='col span_12 register_on_checkout'>
       <h2>Sign Up for our newsletter</h2>
       <hr>
@@ -95,6 +96,7 @@
         <p>Email addresses are never shared with outside sources.</p>
         <%= check_box('sign_up_for_newsletter', 'yes') %><small>Sign up for the Key-To-Life weekly newsletter.</small>
     </div>
+  <% end %>
   </div>
    <div class="col span_12 registration_row regisration_submit">
     <%= f.submit 'Continue', :class => 'checkout-button link_to_button' %>

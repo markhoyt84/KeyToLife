@@ -3,6 +3,8 @@
     <%= image_tag(@product.photos.first.url) %>
   </div>
 <div class='product_info col span_6'>
+<%= link_to @category.name, category_path(@category), :class => 'category_title_link' %><br>
+<br>
 <span class='product_title'><%= @name || @product.name %></span><br>
 <br>
 <span class='price_range'><%= @description.range %></span><br>
@@ -53,9 +55,23 @@
   </div>
   <div class='col span_3'></div>
 </div>
+<%if @related %>
+<h3 class='checkout_header ta-c'>You may also like...</h3>
+<div class='row gutters'>
+  <div class='col span_3'><p></p></div>
+  <% @related.each do |item| %>
+    <div class='col span_2 related_items'>
+      <%= render partial: 'product', locals: {product: item} %>
+    </div>
+  <% end %>
+  <div class='col span_3'></div>
+</div>
+<% end %>
+<br>
 
 
 <script>
+titleIn($('.category_title_link'));
 var cartNum = parseInt($('#cartlength').text());
 if(cartNum > 0 ){
   $('#cartlength').text(" " + (cartNum - 1) + " ");
@@ -107,16 +123,5 @@ $('.buy_button').on('click', function(e){
   var cartNum = parseInt($('#cartlength').text());
   $('#cartlength').text(" " + (cartNum + 1) + " ");
   $('#notice').html("<%= flash[:notice] %>")
-  // $('#currentest_cart').html("<%= j (render(:partial => 'shopping_carts/modal')).html_safe %>")
-  // var itemId = $('option:selected').attr('id');
-  // var cartNum = parseInt($('#cartlength').text());
-  // $('#cartlength').text(cartNum + 1);
-  // $.ajax({
-  //   type: 'POST',
-  //   url: 'shopping_carts/cart_items/'
-  // }).done(function(){
-  //   $('table.cart_table').append()
-  // }
-  // );
 });
 </script>

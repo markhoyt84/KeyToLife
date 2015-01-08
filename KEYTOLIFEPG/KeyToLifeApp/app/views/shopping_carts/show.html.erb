@@ -2,7 +2,11 @@
   <%= render 'proceed_modal' %>
 </div>
 
-<h1>My Cart</h1>
+<% if current_user %>
+  <h1><%=current_user.first_name.pluralize %> Cart</h1>
+<% else %>
+  <h1>My Cart</h1>
+<% end %>
 <div class='cart_page row'>
   <div class='row cart_title_row'>
     <div class='col span_3 cart_title'>
@@ -60,6 +64,6 @@ $('#checkout').on('click', function(){
   showLogoImage();
 })
 }else{
-  $('.checkout_button_div').html("<%= j link_to 'Proceed to Checkout', new_order_path %>")
+  $('.checkout_button_div').html("<%= j button_to 'Proceed to Checkout', new_order_path, :method => 'get', :class => 'checkout-button link_to_button' %>")
 }
 </script>

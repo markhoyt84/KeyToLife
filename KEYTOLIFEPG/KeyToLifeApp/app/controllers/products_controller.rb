@@ -21,7 +21,13 @@ class ProductsController < ApplicationController
     get_cart
     @categories = Category.all
     @product = Product.find(params[:id])
+    @category = @product.category
     @currentProduct = @product
+    array = [1, 2, 3, 4]
+    if array.include?(@category.id)
+      @related = []
+      @related = @product.get_related
+    end
     if @product.name == 'Growers Magic'
       @name = "Grower's Magic"
     end

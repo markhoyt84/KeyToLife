@@ -9,6 +9,7 @@ class CreateProducts < ActiveRecord::Migration
       t.decimal :MSRP, :precision => 8, :scale => 2
       t.references :category
       t.references :description
+      t.decimal :weight, :precision => 6, :scale => 2
 
       t.timestamps
     end

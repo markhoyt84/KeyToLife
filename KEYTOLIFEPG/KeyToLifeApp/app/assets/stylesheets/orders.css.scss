@@ -19,14 +19,70 @@
   padding-bottom: 2em;
 }
 
-.address_list {
-  list-style: none;
+.address_lists {
+  min-height: 158px;
 }
 
 .coupon {
   text-align: center;
 }
 
-.address_list li {
+// final order checkout list
+
+.checkout_table {
+  font-size: 1.5em;
+  font-family: 'Audiowide', Arial;
+  text-shadow: 0 0 3px #37FF00;
+}
+
+.checkout_cart tr td {
+  font-size: 1.2em;
+  font-style: bold;
   color: black;
+}
+
+.address_lists p {
+  font-size: 1.2em;
+  font-style: bold;
+  color: black;
+}
+
+.checkout_header {
+  font-family: 'Audiowide', Arial;
+  text-shadow: 0 0 3px #37FF00;
+  margin: 5px;
+  padding: 0;
+}
+
+.totals_tally {
+  float: right;
+}
+
+td.cost {
+  float: right;
+}
+
+.final_order_list {
+  border-radius: 10px;
+  box-shadow: 0 0 10px black;
+  background-color: white;
+  padding: 5px;
+}
+
+#final_items_list {
+  min-height: 360px;
+}
+
+.hidden_vals {
+  visibility: none;
+}
+
+.stripe_payment img {
+  width: 70%;
+}
+
+.payments_div {
+  border-radius: 10px;
+  box-shadow: 0 0 10px black;
+  background-color: white;
 }

@@ -16,21 +16,23 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    category = Category.find(params[:id])
-    if category.id == 1
-      @products = category.products.where('size' => '2 oz.')
-    elsif category.id == 2
-      @products = category.products.where('size' => '2 oz.')
-    elsif category.id == 3
-      @products = category.products
-    elsif category.id == 4
+    @category = Category.find(params[:id])
+    if @category.id == 1
+      @products = @category.products.where('size' => '2 oz.')
+    elsif @category.id == 2
+      @products = @category.products.where('size' => '2 oz.')
+    elsif @category.id == 3
+      @products = @category.products.where('size' => '2 oz.')
+    elsif @category.id == 4
+      @products = @category.products
+    elsif @category.id == 5
       @products = []
-      @products << category.products.first
-    elsif category.id == 5
+      @products << @category.products.first
+    elsif @category.id == 6
       @products = []
-      @products << category.products.first
-    elsif category.id == 6
-      prods = category.products
+      @products << @category.products.first
+    elsif @category.id == 7
+      prods = @category.products
       hats = prods.find(116)
       shirts = prods.find(113)
       @products = []

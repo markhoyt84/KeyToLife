@@ -21,7 +21,9 @@ class ApplicationController < ActionController::Base
   end
 
   def search
-    @current_cart = ShoppingCart.find(session[:current_cart])
+    if session[:current_cart]
+      @current_cart = ShoppingCart.find(session[:current_cart])
+    end
     @categories = Category.all
     @search_term = params[:keyword]
     @keyword = params[:keyword].downcase

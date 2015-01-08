@@ -90,3 +90,9 @@ function switchActive(el){
   };
   $(that).addClass('green_to_white');
 };
+
+function titleIn(a){
+$(a).fadeIn('slow', function(){
+  console.log('done');
+  });
+};

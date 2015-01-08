@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141231164405) do
+ActiveRecord::Schema.define(version: 20150107165159) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,15 +53,6 @@ ActiveRecord::Schema.define(version: 20141231164405) do
     t.datetime "updated_at"
   end
 
-  create_table "customers", force: true do |t|
-    t.string   "firstname"
-    t.string   "lastname"
-    t.string   "email"
-    t.string   "phone_number"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "descriptions", force: true do |t|
     t.string   "range"
     t.string   "headline"
@@ -70,6 +61,13 @@ ActiveRecord::Schema.define(version: 20141231164405) do
     t.string   "derived"
     t.string   "ingredient"
     t.string   "love"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "order_notes", force: true do |t|
+    t.text     "notes"
+    t.integer  "order_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -83,6 +81,7 @@ ActiveRecord::Schema.define(version: 20141231164405) do
     t.decimal  "grand_total",            precision: 8, scale: 2
     t.string   "status",                                         default: "Processing"
     t.string   "email"
+    t.string   "stripe_customer_id"
     t.string   "first_name"
     t.string   "last_name"
     t.string   "company"
@@ -116,6 +115,7 @@ ActiveRecord::Schema.define(version: 20141231164405) do
     t.decimal  "MSRP",           precision: 8, scale: 2
     t.integer  "category_id"
     t.integer  "description_id"
+    t.decimal  "weight",         precision: 6, scale: 2
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -161,6 +161,7 @@ ActiveRecord::Schema.define(version: 20141231164405) do
     t.string   "zip"
     t.string   "telephone"
     t.string   "tier"
+    t.string   "stripe_customer_id"
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"

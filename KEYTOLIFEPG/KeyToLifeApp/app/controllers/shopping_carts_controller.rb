@@ -36,8 +36,9 @@ class ShoppingCartsController < ApplicationController
   end
 
   def create
+    get_cart
     item_id = params[:product_id]
-    @cart = session[:cart_items]
+    @cart = session[:cart_items] || session[:cart_items] = []
     @product = Product.find(item_id)
     @shopping_cart = ShoppingCart.create(shopping_cart_params)
     @cart << @product

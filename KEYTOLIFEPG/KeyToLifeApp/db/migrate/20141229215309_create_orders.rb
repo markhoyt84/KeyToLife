@@ -9,6 +9,7 @@ class CreateOrders < ActiveRecord::Migration
       t.decimal :grand_total, :precision => 8, :scale => 2
       t.string :status, :default => 'Processing'
       t.string :email
+      t.string :stripe_customer_id
       t.string :first_name, :last_name, :company, :billing_address, :billing_address_city, :billing_address_state, :billing_address_zip, :shipping_address, :shipping_address_city, :shipping_address_state, :shipping_address_zip, :telephone
 
       t.timestamps

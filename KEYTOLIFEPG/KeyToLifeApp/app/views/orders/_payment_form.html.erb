@@ -1,86 +1,163 @@
-<div class='row gutters debug'>
-<div class='col span_9'
-<h1>Order Details:</h1>
-<table class='cart_table'>
-  <tbody>
-  <tr>
-    <td class='size'>SIZE</td><td class='item_name'>NAME</td><td class='cost'>PRICE</td>
-  </tr>
-  <tr>
-    <td><hr></td><td><hr></td><td><hr></td>
-  </tr>
-<% @current_cart.cart_items.each do |item| %>
-    <%= render partial: 'cart_items/show', locals: {item: item} %>
-<% end %>
-</tbody>
-</table>
-<table class='total_table'>
-  <tbody>
-  <tr>
-    <td><hr></td><td><hr></td><td><hr></td>
-  </tr>
-  <tr>
-    <td class='size'>SUBTOTAL:</td><td class='item_name'><p></p></td><td class='cost'><%= number_to_currency(@order.total) %></td>
-  </tr>
-  <tr>
-    <td class='size'>TAX:</td><td class='item_name'><p></p></td><td class='cost'><%= number_to_currency(0) %></td>
-  </tr>
-  <tr>
-    <td class='size'>SHIPPING AND HANDLING:</td><td class='item_name'><p></p></td><td class='cost'><%= number_to_currency(0) %></td>
-  </tr>
-  </tbody>
-</table>
-</div>
-<div class='col span_3 debug coupon'>
-  <div class='row debug'>
-  <h5>Enter coupon code here:</h5>
-  <form method='post' action='/order/coupon'>
-    <input type='text' name='coupon[code]'>
-    <input type='submit' value='Apply Coupon'>
-  </form>
-  </div>
-  <div class='row debug'>
-    <h5>Order Notes:</h5>
-    <small>For need-to-know information such as, "Do not include invoice in box, this is a gift", "Please leave package at backdoor", or anything else you'd like us to read before shipping your order.</small>
-  </div>
-</div>
-</div>
-<div class='row gutters'>
-  <div class='col span_3 debug'>
-    <h3>Billing Address:</h3>
-    <ul class='address_list'>
-      <li><%= @order.first_name %></li>
-      <li><%= @order.last_name %></li>
-      <li><%= @order.billing_address %></li>
-      <li><%= @order.billing_address_city %>, <%= @order.billing_address_state %>, <%= @order.billing_address_zip %></li>
-      <li>T: <%= @order.telephone %></li>
-    </ul>
-  </div>
-  <div class='col span_3 debug'>
-    <h3>Shipping Address:</h3>
-    <ul class='address_list'>
-      <li><%= @order.first_name %></li>
-      <li><%= @order.last_name %></li>
-      <li><%= @order.shipping_address %></li>
-      <li><%= @order.shipping_address_city %>, <%= @order.shipping_address_state %>, <%= @order.shipping_address_zip %></li>
-      <li>T: <%= @order.telephone %></li>
-    </ul>
-  </div>
-  <div class='col span_3 debug'>
-    <h3>Order Totals:</h3>
-    <table>
-      <tr>
-        <td>Subtotal:</td><td><%= number_to_currency(@order.total) %></td>
-      </tr>
-      <tr>
-        <td>Discount:</td><td><%= number_to_currency(@order.total) %></td>
-      </tr>
-      <tr>
-        <td>Tax:</td><td><%= number_to_currency(@order.tax) %></td>
-      </tr>
-      <tr>
-        <td>Grand Total:</td><%= number_to_currency(@order.grand_total) %></td>
-      </tr>
+<div class='row gutters gutters'>
+  <div id='final_items_list' class='col span_9 final_order_list'>
+    <h1 class='checkout_header'>Order Details:</h1>
+    <br>
+    <table class='cart_table checkout_cart'>
+      <tbody>
+        <tr>
+          <td class="checkout_table">SIZE</td><td class="checkout_table">NAME</td><td class="checkout_table cost">PRICE</td>
+        </tr>
+        <tr>
+          <td><hr></td><td><hr></td><td><hr></td>
+        </tr>
+        <% @current_cart.cart_items.each do |item| %>
+        <%= render partial: 'cart_items/show', locals: {item: item} %>
+        <% end %>
+      </tbody>
+    </table>
+    <table class='total_table checkout_cart'>
+      <tbody>
+        <tr>
+          <td><hr></td><td><hr></td><td><hr></td>
+        </tr>
+        <tr>
+          <td class='size'>SUBTOTAL:</td><td class='item_name'><p></p></td><td class='cost'><%= number_to_currency(@order.total) %></td>
+        </tr>
+        <tr>
+          <td class='size'>TAX:</td><td class='item_name'><p></p></td><td class='cost'><%= number_to_currency(0) %></td>
+        </tr>
+        <tr>
+          <td class='size'>SHIPPING AND HANDLING:</td><td class='item_name'><p></p></td><td class='cost'><%= number_to_currency(0) %></td>
+        </tr>
+      </tbody>
     </table>
   </div>
+  <div class='col span_3 coupon'>
+    <div class='row final_order_list'>
+      <h4 class='checkout_header'>Enter coupon code here:</h4>
+      <form method='post' action='/order/coupon'>
+        <input type='text' name='coupon[code]'><br>
+        <br>
+        <input type='submit' value='Apply Coupon'>
+      </form>
+    </div>
+    <br>
+    <div class='row final_order_list'>
+      <h4 class='checkout_header'>Order Notes:</h4>
+      <small>For need-to-know information such as, "Do not include invoice in box, this is a gift", "Please leave package at backdoor", or anything else you'd like us to read before shipping your order.</small><br>
+      <br>
+      <%= text_area(:order_note, :notes, size: 200) %>
+    </div>
+  </div>
 </div>
+<br>
+<div class='row gutters'>
+  <div class='col span_3 address_lists final_order_list'>
+    <h3 class='checkout_header'>Billing Address:</h3>
+    <p>
+      <%= @order.first_name %> <%= @order.last_name %><br>
+      <%= @order.billing_address %><br>
+      <%= @order.billing_address_city %>, <%= @order.billing_address_state %>, <%= @order.billing_address_zip %><br>
+      T: <%= @order.telephone %><br>
+    </p>
+  </div>
+  <div class='col span_3 address_lists final_order_list'>
+    <h3 class='checkout_header'>Shipping Address:</h3>
+    <p>
+      <%= @order.first_name %> <%= @order.last_name %><br>
+      <%= @order.shipping_address %><br>
+      <%= @order.shipping_address_city %>, <%= @order.shipping_address_state %>, <%= @order.shipping_address_zip %><br>
+      T: <%= @order.telephone %><br>
+    </p>
+  </div>
+  <div class='col span_3 address_lists final_order_list'>
+    <h3 class='checkout_header'>Order Totals:</h3>
+    <p>
+      Subtotal:<span class='totals_tally'><%= number_to_currency(@order.total) %></span><br>
+      Discount:<span class='totals_tally'>0%</span><br>
+      Tax:<span class='totals_tally'><%= number_to_currency(@order.tax) %></span><br>
+      <hr>
+      Grand Total:<span class='totals_tally'><%= number_to_currency(@order.grand_total) %></span>
+    </p>
+  </div>
+</div>
+<br>
+<div class='row final_order_list'>
+  <h1 class='checkout_header'>Payment Methods</h1>
+  <% if current_user && current_user.stripe_customer_id == nil || current_user == nil %>
+  <div class='col span_6 final_order_list'>
+    <%= form_tag purchase_path do %>
+      <span class="payment-errors"></span>
+      <div class="hidden_vals" style='visibility: hidden;'>
+            <%= text_field(:order, :id, value: @order.grand_total) %>
+            <%= text_field(:order, :email, value: @order.email) %>
+      </div>
+        <div class="form-row">
+          <label>
+            <span>Card Number</span>
+            <%= text_field(:charge, :card_num, :size => 20, 'data-stripe' => 'number') %>
+          </label>
+        </div>
+    <div class="form-row">
+      <label>
+        <span>CVC</span>
+        <%= text_field(:charge, :cvc, :size => 4, 'data-stripe' => 'number') %>
+      </label>
+    </div>
+
+    <div class="form-row">
+      <label>
+        <span>Expiration (MM/YYYY)</span>
+        <%= text_field(:charge, :exp_month, :size => 2, 'data-stripe' => 'exp_month') %>
+      </label>
+      <span> / </span>
+      <%= text_field(:charge, :exp_year, :size => 4, 'data-stripe' => 'exp-year') %>
+    </div>
+      <%= submit_tag("Submit Payment") %>
+    <% end %>
+  </div>
+  <% else %>
+    <div class='col span_6 stripe_payment debug'>
+        <h3>Pay-With-Card</h3>
+        <p>**** **** **** <%= @card_num %></p>
+        <%= button_to 'Submit Purchase', purchase_path, params: {id: @order.grand_total, email: @order.email} %>
+        <%= image_tag('https://databaseindays.com/wp-content/uploads/stripe-payments.png') %>
+    </div>
+  <% end %>
+    <div class='col span_6 fl-nd debug'>
+        <h3>Pay-With-Paypal</h3>
+          <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+            <input type="hidden" name="cmd" value="_cart">
+            <!-- <input type="hidden" name="redirect_cmd" value="_xclick">
+            <input type="hidden" name="hosted_button_id" value="4ECHE2CZEXCNQ"> -->
+            <input type="hidden" name="business" value="sales@agreenlife.com">
+            <input type="hidden" name="item_name" value="KTL Cart #<%= @order.id %>">
+            <input type="hidden" name="currency_code" value="USD">
+            <input type='hidden' name="amount" value="<%= @order.grand_total %>">
+            <input type="hidden" name="upload" value="1">
+            <% @counter = 1 %>
+            <% @current_cart.cart_items.each do |item| %>
+              <input name="item_number_<%= @counter %>" value="<%= item.id %>" >
+              <input name="item_name_<%= @counter %>" value="<%= item.name %>" >
+              <input name="amount_<%= @counter %>" value="<%= item.price %>" >
+              <% @counter += 1 %>
+            <% end %>
+            <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_paynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+            <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+          </form>
+    </div>
+</div>
+
+<script>
+
+$('#payment-form').submit('click', function(e){
+  e.preventDefault();
+  $.ajax({
+    url: '/purchase',
+    type: 'POST'
+  }).done(function(){
+    console.log('poop')
+  });
+});
+
+</script>

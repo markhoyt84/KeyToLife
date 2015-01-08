@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :order_notes
+
   resources :subscribers
 
   devise_for :admins
@@ -36,6 +38,8 @@ Rails.application.routes.draw do
       post 'add_to_session_cart'
     end
   end
+
+  post 'purchase' => 'orders#stripe_purchase'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

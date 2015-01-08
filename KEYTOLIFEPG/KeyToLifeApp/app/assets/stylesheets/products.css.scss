@@ -63,10 +63,9 @@ span#current_price{
   line-height: 1.5em;
   margin-bottom: 25px;
   height: auto;
-  font-family: 'Audiowide', Arial;
+  font-family: Arial;
   color: black;
-  font-size: 1.7em;
-  text-shadow: 0 0 1px #37FF00;
+  font-size: 1.5em;
   text-align: center;
   border-bottom: 1px solid black;
   border-left: 1px solid black;
@@ -151,10 +150,9 @@ span#current_price{
   line-height: 1.5em;
   margin-bottom: 25px;
   height: auto;
-  font-family: 'Audiowide', Arial;
+  font-family: Arial;
   color: black;
-  font-size: 1.7em;
-  text-shadow: 0 0 1px #37FF00;
+  font-size: 1.5em;
   text-align: center;
   border-bottom: 1px solid black;
   border-left: 1px solid black;
@@ -180,3 +178,39 @@ p#notice {
   cursor: pointer;
   cursor: hand;
 }
+
+.path_bar {
+  border-radius: 5px;
+  box-shadow: black 0px 0px 10px 1px;
+  background-color: #D0FE71;
+}
+
+.category_title_link {
+  display: none;
+  font-size: 2em;
+  font-family: 'Audiowide', Arial;
+  color: black;
+  text-align: center;
+  text-shadow: 0 0 4px #37FF00;
+}
+
+.category_title_link:visited {
+  color: black;
+}
+
+// related products row
+
+.main-page-thumb{
+  width: 100%;
+}
+
+.item {
+  height: 100%;
+  background-color: white;
+}
+
+.related_items .main-page-detail{
+  font-size: 1.4em;
+}
+
+
