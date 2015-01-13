@@ -1,23 +1,21 @@
 <h1>Listing orders</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+<div class='cart_page row'>
+  <div class='row cart_title_row'>
+    <div class='col span_3 cart_title'>
+      <h2>ORDER #</h2>
+    </div>
+    <div class='col span_3 cart_title'>
+      <h2>ORDER DATE</h2>
+    </div>
+    <div class='col span_3 cart_title'>
+      <h2>STATUS</h2>
+    </div>
+    <div class='col span_3 cart_title'>
+      <h2>RECEIPT</h2>
+    </div>
+  </div>
     <% @orders.each do |order| %>
-      <tr>
-        <td><%= link_to 'Show', order %></td>
-        <td><%= link_to 'Edit', edit_order_path(order) %></td>
-        <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <%= render partial: 'show_order', locals: {order: order} %>
     <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Order', new_order_path %>
+</div>

@@ -9,6 +9,7 @@ class OrderNotesController < ApplicationController
   end
 
   def show
+    get_categories
     respond_with(@order_note)
   end
 
@@ -21,9 +22,15 @@ class OrderNotesController < ApplicationController
   end
 
   def create
+    p params
     @order_note = OrderNote.new(order_note_params)
-    @order_note.save
-    respond_with(@order_note)
+    respond_to do |format|
+      if @order_note.save
+        format.js { flash.now[:notice] = "Successfully added to cart"}
+      else
+        format.js { flash[:notice] = "Item could not be added to cart"}
+      end
+    end
   end
 
   def update
@@ -41,7 +48,11 @@ class OrderNotesController < ApplicationController
       @order_note = OrderNote.find(params[:id])
     end
 
+    def get_categories
+      @categories = Category.all
+    end
+
     def order_note_params
-      params[:order_note]
+      params.require(:order_note).permit(:notes, :order_id)
     end
 end

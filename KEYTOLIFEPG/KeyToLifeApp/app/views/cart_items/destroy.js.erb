@@ -1,9 +1,9 @@
+$('#currentest_cart').html("<%= j (render(:partial => 'shopping_carts/modal', :locals => {:current_cart => @current_cart})).html_safe %>");
 $('#item_<%= @cart_item.id %>').fadeOut();
 numItems = $('span#cartlength').text();
 newNum = numItems - 1;
 $('span#cartlength').text(newNum);
 
-$('#currentest_cart').html("<%= j (render(:partial => 'shopping_carts/modal', :locals => {:current_cart => @current_cart})).html_safe %>");
 
 // $('#my_cart_total').text('$<%= @total %>');
 var total = $('#my_cart_total');

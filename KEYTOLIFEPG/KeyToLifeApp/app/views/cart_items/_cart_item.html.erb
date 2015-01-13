@@ -8,10 +8,10 @@
 
       <%= link_to 'Remove', shopping_cart_cart_item_path(@current_cart, item), :class => 'deleted', method: :delete, remote: true %>
   </div>
-  <div class='col span_3 cart_stat'>
-
+  <div class='col span_3 cart_quantity'>
+    <%= render partial: 'cart_items/update_quantity', locals: {item: item} %>
   </div>
-  <div class='col span_3 cart_stat'>
+  <div class='col span_3 cart_stat cart_item_price'>
   <%=number_to_currency(item.price) %>
   </div>
 </div>

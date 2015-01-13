@@ -4,7 +4,9 @@ class CreateCartItems < ActiveRecord::Migration
       t.string :name
       t.string :size
       t.string :sku
+      t.integer :quantity, :default => 1
       t.float :price
+      t.float :weight
       t.decimal :price, :precision => 8, :scale => 2
       t.references :category
       t.references :description

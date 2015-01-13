@@ -45,7 +45,7 @@ class ShoppingCartsController < ApplicationController
     @shopping_cart.total = @product.MSRP
     @shopping_cart.customer_id = session[:user_id]
     @shopping_cart.item_count = 1
-    @newItem = @shopping_cart.cart_items.create(name: @product.name, size: @product.size, sku: @product.sku, price: @product.MSRP, category_id: @product.category_id, description_id: @product.description_id, shopping_cart_id: @shopping_cart.id)
+    @newItem = @shopping_cart.cart_items.create(name: @product.name, size: @product.size, sku: @product.sku, price: @product.MSRP, category_id: @product.category_id, description_id: @product.description_id, shopping_cart_id: @shopping_cart.id, weight: @product.weight)
         session[:current_cart] = @shopping_cart.id
     respond_to do |format|
       @cart_items = session[:cart_items]

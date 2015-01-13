@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  resources :greenideas
+
+  resources :questions
+
   resources :order_notes
 
   resources :subscribers
@@ -8,7 +12,10 @@ Rails.application.routes.draw do
   resources :orders do
     member do
       get 'payments'
+      get 'success'
+      get 'cancel'
     end
+    resources :order_notes
   end
 
   resources :shopping_carts do
@@ -22,8 +29,9 @@ Rails.application.routes.draw do
   get 'welcome/index'
   # get 'welcome/about' => 'welcome#about', as: :about
   get 'about' => 'application#about', as: :about
-
+  get 'contact' => 'application#contact', as: :contact
   get 'search' => 'application#search', as: :search
+  get 'privacy' => 'application#privacy', as: :privacy
   # get 'results' => 'application#search', as: :results
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -41,6 +49,7 @@ Rails.application.routes.draw do
 
   post 'purchase' => 'orders#stripe_purchase'
 
+  post 'update_quantity' => 'cart_items#update_quantity', as: :quantity
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

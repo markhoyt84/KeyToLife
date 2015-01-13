@@ -5,19 +5,23 @@ class ApplicationController < ActionController::Base
   before_action :new_subscriber
   def about
     @categories = Category.all
+    get_cart
   end
 
   def new_subscriber
     @subscriber = Subscriber.new
   end
 
-  def add_to_session_cart
-    respond_to do |format|
-      format.html
-      format.js
-    end
-    session[:cart_items]
+  def contact
+    @categories = Category.all
+    @question = Question.new
+    @greenidea = Greenidea.new
+    get_cart
+  end
 
+  def privacy
+    @categories = Category.all
+    get_cart
   end
 
   def search
@@ -32,12 +36,10 @@ class ApplicationController < ActionController::Base
     @all = {}
     @proddesc = Product.all
     @products = Product.where('name LIKE ? OR name LIKE ?',"%" + @keyword + "%", "%" + @upkey + "%").all
-    # @cats = Category.where(['name LIKE ?', @keyword]).all
     @categories_search = Category.where('name LIKE ? OR name LIKE ? OR description LIKE ? OR description LIKE ?', "%" + @keyword + "%", "%" + @upkey + "%", "%" + @keyword + "%", "%" + @upkey + "%").all
     @proddesc.each do |prod|
       prod.description.attributes.each do |key, value|
         if (value =~ /#{Regexp.escape(@keyword)}/i) != nil
-        p '&' * 100
         @descriptions << prod
       end
       end
@@ -57,4 +59,14 @@ class ApplicationController < ActionController::Base
         flash.now[:notice] = "No Search Results Found for:" + "#{params[:keyword]}"
     end
   end
+
+  private
+  def get_cart
+      if session[:current_cart] == nil
+        @current_cart = false
+      else
+       @current_cart = ShoppingCart.find(session[:current_cart])
+      end
+      @current_cart
+    end
 end

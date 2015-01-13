@@ -2,7 +2,7 @@ class User::SessionsController < Devise::SessionsController
 # before_filter :configure_sign_in_params, only: [:create]
   before_action :get_categories
   # GET /resource/sign_in
-  respond_to :json
+  respond_to :json, :js
 
   def new
     super
@@ -20,7 +20,7 @@ class User::SessionsController < Devise::SessionsController
     @last = current_user.last_name
     @lastletter =  @last.split('').first
     session[:username] = current_user.first_name + " " + @lastletter
-    @username = session[:username]
+    p @username
   end
 
   # DELETE /resource/sign_out

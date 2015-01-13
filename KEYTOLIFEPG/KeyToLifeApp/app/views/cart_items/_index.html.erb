@@ -2,13 +2,15 @@
 <table class='cart_table'>
   <tbody>
   <tr>
-    <td class='size'>SIZE</td><td class='item_name'>NAME</td><td class='cost'>PRICE</td>
+    <td class='size'>SIZE</td><td class='item_name'>NAME</td><td class='size'>Quantity</td><td class='cost'>PRICE</td>
   </tr>
   <tr>
-    <td><hr></td><td><hr></td><td><hr></td>
+    <td><hr></td><td><hr></td><td><hr></td><td><hr></td>
   </tr>
 <% @current_cart.cart_items.each do |item| %>
+  <% if item.name != nil %>
     <%= render partial: 'cart_items/show', locals: {item: item} %>
+  <% end %>
 <% end %>
 </tbody>
 </table>
@@ -21,7 +23,7 @@
     <td class='size'>TOTAL:</td><td class='item_name'><td class='cost'><%= number_to_currency(@current_cart.total) %></td>
   </tr>
   <tr class='view_row'>
-    <td></td><td><%=link_to shopping_cart_path(@current_cart), :class =>'cartlink' do %><button class='debug link_to_button'>VIEW CART</button><% end %></td>
+    <td></td><td><%=link_to shopping_cart_path(@current_cart), :class =>'cartlink' do %><button class='link_to_button'>VIEW CART</button><% end %></td>
   </tr>
   </tbody>
 </table>

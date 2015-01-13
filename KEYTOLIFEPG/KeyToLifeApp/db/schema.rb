@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150107165159) do
+ActiveRecord::Schema.define(version: 20150113023653) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,7 +38,9 @@ ActiveRecord::Schema.define(version: 20150107165159) do
     t.string   "name"
     t.string   "size"
     t.string   "sku"
+    t.integer  "quantity",                                 default: 1
     t.decimal  "price",            precision: 8, scale: 2
+    t.float    "weight"
     t.integer  "category_id"
     t.integer  "description_id"
     t.integer  "shopping_cart_id"
@@ -61,6 +63,14 @@ ActiveRecord::Schema.define(version: 20150107165159) do
     t.string   "derived"
     t.string   "ingredient"
     t.string   "love"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "greenideas", force: true do |t|
+    t.text     "body"
+    t.string   "email"
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -115,7 +125,15 @@ ActiveRecord::Schema.define(version: 20150107165159) do
     t.decimal  "MSRP",           precision: 8, scale: 2
     t.integer  "category_id"
     t.integer  "description_id"
-    t.decimal  "weight",         precision: 6, scale: 2
+    t.float    "weight"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "questions", force: true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

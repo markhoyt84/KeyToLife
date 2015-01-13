@@ -77,12 +77,15 @@ span#current_price{
 .buy_button {
   font-size: 1.5em;
   border-radius: 8px;
+  z-index: 9999999999999999;
 }
 
 .buy_button:hover {
   background-color: #37FF00;
   font-size: 1.8em;
-   box-shadow: black 0px 0px 10px 1px;
+  box-shadow: black 0px 0px 10px 1px;
+  z-index: 9999999999999999;
+  position: relative;
 }
 
 .prod_description_tab_description {

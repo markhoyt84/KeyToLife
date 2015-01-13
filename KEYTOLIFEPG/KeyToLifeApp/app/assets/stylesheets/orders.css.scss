@@ -1,4 +1,4 @@
-// Place all the styles related to the orders controller here.
+F// Place all the styles related to the orders controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
@@ -20,11 +20,8 @@
 }
 
 .address_lists {
-  min-height: 158px;
-}
-
-.coupon {
-  text-align: center;
+  min-height: 165px;
+  height: auto;
 }
 
 // final order checkout list
@@ -58,6 +55,10 @@
   float: right;
 }
 
+.grand-total{
+  font-size: 1.8em;
+}
+
 td.cost {
   float: right;
 }
@@ -69,8 +70,27 @@ td.cost {
   padding: 5px;
 }
 
+#order_notes {
+  width: auto;
+  display: none;
+}
+
+.new_order_note {
+  margin-bottom: 1em;
+}
+.checkout_form {
+  margin-bottom: 1em;
+}
+
 #final_items_list {
-  min-height: 360px;
+  min-height: 378px;
+  height: auto;
+}
+
+.coupon {
+  height: 100%;
+  max-height:378px;
+  text-align: center;
 }
 
 .hidden_vals {
@@ -85,4 +105,16 @@ td.cost {
   border-radius: 10px;
   box-shadow: 0 0 10px black;
   background-color: white;
+}
+
+.gtotalhide {
+  visibility: hidden;
+}
+
+.stripe-paypal {
+  width: 150px;
+}
+
+.payment_divs {
+  height: 250px;
 }

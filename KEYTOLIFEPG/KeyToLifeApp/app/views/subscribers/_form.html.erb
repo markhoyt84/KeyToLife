@@ -12,8 +12,8 @@
   <% end %>
 
   <div class="actions">
-    Subscribe...<br>
+    <span id='subscribe'>Subscribe...</span><br>
     <%= f.email_field :email, placeholder: 'Email Address...' %>
-    <%= f.submit '>' %>
+    <%= f.submit '>', :class => 'link_to_button' %>
   </div>
 <% end %>

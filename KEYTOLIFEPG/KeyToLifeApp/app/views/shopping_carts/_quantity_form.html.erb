@@ -3,7 +3,7 @@
       <% array = [] %>
       <% drop_array = (1..10).to_a %>
       <% drop_array.each do |num| %>
-      <% new_array = [num, cart_item.sku] %>
+      <% new_array = [num, item.sku] %>
       <% array << new_array %>
       <% end %>
       <%= options_for_select(drop_array) %>

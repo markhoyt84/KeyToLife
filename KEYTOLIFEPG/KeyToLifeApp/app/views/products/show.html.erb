@@ -88,7 +88,7 @@ changeText($('#product_id'));
 changeText($('#cart_item_id'));
 
 $('.prod_description_tab_reviews').on('click', function(){
-  switchActive($(this));
+  switchActive($(this), '.show_tab', 'green_to_white');
   $('.prod_description_tab').css('display', 'none');
   $('.prod_description_tab_description').css('border-bottom', '1px solid black');
   $('.prod_reviews_tab').css('display', 'block');
@@ -98,7 +98,7 @@ $('.prod_description_tab_reviews').on('click', function(){
 });
 
 $('.prod_description_tab_directions').on('click', function(){
-  switchActive($(this));
+  switchActive($(this), '.show_tab', 'green_to_white');
   $('.prod_description_tab').css('display', 'none');
   $('.prod_description_tab_description').css('border-bottom', '1px solid black');
   $('.prod_reviews_tab').css('display', 'none');
@@ -108,7 +108,7 @@ $('.prod_description_tab_directions').on('click', function(){
 })
 
 $('.prod_description_tab_description').on('click', function(){
-  switchActive($(this));
+  switchActive($(this), '.show_tab', 'green_to_white');
   $('.prod_description_tab').css('display', 'block');
   $('.prod_reviews_tab').css('display', 'none');
   $('.prod_description_tab_reviews').css('border-bottom', '1px solid black');
@@ -117,11 +117,11 @@ $('.prod_description_tab_description').on('click', function(){
   $('.prod_description_tab_description').css('border-bottom', '0px solid white');
 });
 
-$('.buy_button').on('click', function(e){
-  e.preventDefault;
+$('.buy_button').on('click', function(){
   console.log('coward');
   var cartNum = parseInt($('#cartlength').text());
-  $('#cartlength').text(" " + (cartNum + 1) + " ");
+  console.log
+  $('#cartlength').text("<%= j render 'cart_items/num_items' %>");
   $('#notice').html("<%= flash[:notice] %>")
 });
 </script>

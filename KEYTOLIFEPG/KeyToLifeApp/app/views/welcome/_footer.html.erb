@@ -1,22 +1,23 @@
 <div id="footer">
-  <div class="footer-container row gutters">
+  <div class="footer-container row white_to_green">
     <div class="col span_4 footer_col">
       <p><%= link_to 'About', about_path %><br>
-        Press<br>
-        Contact</p>
+        <%= link_to 'Contact', contact_path %></p>
     </div>
     <div class="col span_4 footer_col">
-        <p>Terms<br>
-          Policies</br>
+        <p><%= link_to 'Privacy Policies', privacy_path %></br>
           Sitemap</p>
     </div>
-
     <div class="col span_4 footer_col">
-        </br>
         <div id="email_input">
           <p id="subscribe_notice"><%= notice %></p>
+          <br>
           <%= render 'subscribers/form' %>
         </div>
     </div>
+  <div class='col span_12 ta-c'>
+      Copyright © 2015 · A GREEN LIFE LLC <small><small>by MARK HOYT</small></small><br>
+      3881 C Steele St, Denver, CO 80205 • Order Toll Free (855) 695-3986
+  </div>
   </div>
 </div>

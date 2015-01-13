@@ -1,0 +1,29 @@
+<%= form_for @question, :remote => true do |f| %>
+  <% if @question.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@question.errors.count, "error") %> prohibited this question from being saved:</h2>
+
+      <ul>
+      <% @question.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <p>
+      <%= f.label :name %><br>
+      <%= f.text_field :name, required: true%>
+    </p>
+    <p>
+      <%= f.label :email %><br>
+      <%= f.text_field :email, required: true %>
+    </p>
+    <p>
+      <%= f.label ('What can we help you with?') %><br>
+      <%= f.text_area :body, :size => "40x10",  required: true %>
+    </p>
+    <%= f.submit ('Submit Question'), :class => 'link_to_button'%>
+  </div>
+<% end %>

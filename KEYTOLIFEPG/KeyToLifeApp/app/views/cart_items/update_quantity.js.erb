@@ -1,0 +1,9 @@
+  var total = $('#my_cart_total');
+  total.text('<%= @total %>');
+  var newTotal = Number(total.text()).toFixed(2);
+  total.text('$' + newTotal);
+  var item = $('#item_<%= @item.id%> .cart_item_price');
+  item.text("<%= @item.price %>");
+  var newItemTotal = Number(item.text()).toFixed(2);
+  item.text('$' + newItemTotal);
+  $('#currentest_cart').html("<%= j (render(:partial => 'shopping_carts/modal', :locals => {:current_cart => @current_cart})).html_safe %>");

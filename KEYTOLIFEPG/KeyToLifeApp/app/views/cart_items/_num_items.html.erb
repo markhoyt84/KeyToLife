@@ -1,6 +1,6 @@
-<% if @current_cart == nil%>
+<% if @current_cart == nil || @current_cart == false%>
   <%=0%>
-<% elsif @current_cart %>
+<% elsif %>
   <%= @current_cart.cart_items.length %>
 <% else %>
   <%=0%>
