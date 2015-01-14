@@ -1,0 +1,10 @@
+<div class='item col'>
+  <%= link_to category_path(category) do %>
+<div class='main-page-detail'>
+    <span class="text-content"><span><%= category.name %></span></span>
+</div>
+<div class="main-page-bg"></div>
+    <%=image_tag(category.photos[0].url, :class => 'main-page-thumb')%>
+  <% end %>
+</div>
+

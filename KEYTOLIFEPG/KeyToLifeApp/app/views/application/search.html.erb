@@ -1,0 +1,32 @@
+<h1 class='ta-c'>Search Results:</h1>
+<div class='row'>
+  <div class='col span_12 search_table_div'>
+    <table id='search_table_filters'>
+      <tr>
+        <td id='all' class='search_filter selected_filter'>All</td><td id='products' class='search_filter'>Products</td><td id='categories' class='search_filter'>Categories</td><td id='videos' class='search_filter'>Videos</td><td id='blog' class='search_filter'>Blog</td>
+      </tr>
+    </table>
+  </div>
+  <div class='col span_12 search_results'>
+    <%= render 'all_search_index' %>
+  </div>
+</div>
+
+<script>
+$('.search_filter').on('click', function(){
+  var tab = $(this).attr('id');
+  var tabs = $('#search_table_filters td');
+  console.log(tabs)
+  if(tab === 'all'){
+    $('.search_results').html("<%= j render 'all_search_index' %>")
+    switchActive($(this), tabs, 'selected_filter');
+  }else if(tab === 'products'){
+    $('.search_results').html("<%= j render 'products_search_index' %>")
+    switchActive($(this), tabs, 'selected_filter');
+  }else if(tab === 'categories'){
+    $('.search_results').html("<%= j render 'category_search_index' %>")
+    switchActive($(this), tabs, 'selected_filter');
+  }
+})
+
+</script>

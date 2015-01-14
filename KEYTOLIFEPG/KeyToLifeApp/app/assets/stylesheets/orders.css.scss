@@ -1,0 +1,122 @@
+F// Place all the styles related to the orders controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.new_user_form {
+  font-family: Arial;
+  font-size: 1.3em;
+  font-weight: bold;
+}
+
+.checkout_submit {
+  margin: 0 auto;
+}
+
+.regisration_submit {
+  text-align:center;
+  padding-top: 2em;
+  padding-bottom: 2em;
+}
+
+.address_lists {
+  min-height: 165px;
+  height: auto;
+}
+
+// final order checkout list
+
+.checkout_table {
+  font-size: 1.5em;
+  font-family: 'Audiowide', Arial;
+  text-shadow: 0 0 3px #37FF00;
+}
+
+.checkout_cart tr td {
+  font-size: 1.2em;
+  font-style: bold;
+  color: black;
+}
+
+.address_lists p {
+  font-size: 1.2em;
+  font-style: bold;
+  color: black;
+}
+
+.checkout_header {
+  font-family: 'Audiowide', Arial;
+  text-shadow: 0 0 3px #37FF00;
+  margin: 5px;
+  padding: 0;
+}
+
+.totals_tally {
+  float: right;
+}
+
+.grand-total{
+  font-size: 1.8em;
+}
+
+td.cost {
+  float: right;
+}
+
+.final_order_list {
+  border-radius: 10px;
+  box-shadow: 0 0 10px black;
+  background-color: white;
+  padding: 5px;
+  height: auto;
+}
+
+#order_notes {
+  width: auto;
+  display: none;
+}
+
+.new_order_note {
+  margin-bottom: 1em;
+}
+.checkout_form {
+  margin-bottom: 1em;
+}
+
+#final_items_list {
+  min-height: 366px;
+  height: auto;
+}
+
+.coupon {
+  height: auto;
+  max-height:378px;
+  text-align: center;
+  overflow: none;
+}
+
+.hidden_vals {
+  visibility: none;
+}
+
+.stripe_payment img {
+  width: 70%;
+}
+
+.payments_div {
+  border-radius: 10px;
+  box-shadow: 0 0 10px black;
+  background-color: white;
+}
+
+.gtotalhide {
+  visibility: hidden;
+}
+
+.stripe-paypal {
+  width: 150px;
+}
+
+.payment_divs {
+  height: 250px;
+}

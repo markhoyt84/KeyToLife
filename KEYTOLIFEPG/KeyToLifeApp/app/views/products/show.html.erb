@@ -1,0 +1,137 @@
+<div class='row product_display'>
+  <div class='show_photo col span_6'>
+    <%= image_tag(@product.photos.first.url) %>
+  </div>
+<div class='product_info col span_6'>
+<%= link_to @category.name, category_path(@category), :class => 'category_title_link' %><br>
+<br>
+<span class='product_title'><%= @name || @product.name %></span><br>
+<br>
+<span class='price_range'><%= @description.range %></span><br>
+<br>
+<span class='show_desc'><%= @description.headline %></span><br>
+</div>
+<div id='shopping_cart_form' class='product_info col span_6'>
+  <% if session[:current_cart] == nil %>
+    <p id="notice"><%= notice %></p>
+    <%= render 'shopping_carts/form' %>
+  <% else %>
+     <p id="notice"><%= notice %></p>
+    <%= render 'cart_items/form' %>
+  <% end %>
+</div>
+</div>
+</div>
+<div class='row'>
+  <div class='col span_3'><p></p></div>
+  <div class='col span_2 prod_description_tab_description show_tab green_to_white'>
+    <h2>Description</h2>
+  </div>
+  <div class='col span_2 prod_description_tab_directions show_tab'>
+    <h2>Directions</h2>
+  </div>
+  <div class='col span_2 prod_description_tab_reviews show_tab'>
+    <h2>Reviews</h2>
+  </div>
+  <div class='col span_3'></div>
+</div>
+<div class='row'>
+  <div class='col span_3'><p></p></div>
+  <div class='col span_6 prod_description_tab bgc-w'>
+  <%= @description.description %><br>
+  <br>
+  <%= @description.love %>
+  </div>
+  <div class='col span_6 prod_directions_tab bgc-w' style="display: none;">
+  <%= @description.directions %>
+  <% if @description.derived != nil %>
+  <h4>Derived From: </h4><%= @description.derived %>
+  <% end %>
+  <% if @description.ingredient != nil %>
+  <h4>Contains: </h4><%= @description.ingredient %>
+  <% end %>
+  </div>
+  <div class='col span_6 prod_reviews_tab bgc-w' style="display: none;">
+    <h4>Reviews may only be left by customers who have purchased <%= @product.name %>.</h4>
+  </div>
+  <div class='col span_3'></div>
+</div>
+<%if @related %>
+<h3 class='checkout_header ta-c'>You may also like...</h3>
+<div class='row gutters'>
+  <div class='col span_3'><p></p></div>
+  <% @related.each do |item| %>
+    <div class='col span_2 related_items'>
+      <%= render partial: 'product', locals: {product: item} %>
+    </div>
+  <% end %>
+  <div class='col span_3'></div>
+</div>
+<% end %>
+<br>
+
+
+<script>
+titleIn($('.category_title_link'));
+var cartNum = parseInt($('#cartlength').text());
+if(cartNum > 0 ){
+  $('#cartlength').text(" " + (cartNum - 1) + " ");
+}
+function changeText(el){
+  $(el).change(function(){
+  var itemPrice = $('option:selected').attr('data');
+  var itemSKU = $('option:selected').attr('sku');
+  $('#current_price').text("$" + itemPrice);
+  $('#current_SKU').text("SKU: " + itemSKU);
+  });
+};
+changeText($('#product_id'));
+changeText($('#cart_item_id'));
+
+$('.prod_description_tab_reviews').on('click', function(){
+  switchActive($(this), '.show_tab', 'green_to_white');
+  $('.prod_description_tab').css('display', 'none');
+  $('.prod_description_tab_description').css('border-bottom', '1px solid black');
+  $('.prod_reviews_tab').css('display', 'block');
+  $('.prod_directions_tab').css('display', 'none');
+  $('.prod_description_tab_directions').css('border-bottom', '1px solid black');
+  $(this).css('border-bottom', '0px solid white');
+});
+
+$('.prod_description_tab_directions').on('click', function(){
+  switchActive($(this), '.show_tab', 'green_to_white');
+  $('.prod_description_tab').css('display', 'none');
+  $('.prod_description_tab_description').css('border-bottom', '1px solid black');
+  $('.prod_reviews_tab').css('display', 'none');
+  $('.prod_description_tab_reviews').css('border-bottom', '1px solid black');
+  $('.prod_directions_tab').css('display', 'block');
+  $(this).css('border-bottom', '0px solid white');
+})
+
+$('.prod_description_tab_description').on('click', function(){
+  switchActive($(this), '.show_tab', 'green_to_white');
+  $('.prod_description_tab').css('display', 'block');
+  $('.prod_reviews_tab').css('display', 'none');
+  $('.prod_description_tab_reviews').css('border-bottom', '1px solid black');
+  $('.prod_directions_tab').css('display', 'none');
+  $('.prod_description_tab_directions').css('border-bottom', '1px solid black');
+  $('.prod_description_tab_description').css('border-bottom', '0px solid white');
+});
+
+function buyGold(){
+  $('.buy_button').on('click', function(){
+    console.log('dick');
+    $('.cart_link a').animate({ fontSize: "1.5vw"}, {
+    duration: 100,
+    step: function(){
+      $(this).css('color', '#ffd700');
+    }
+  })
+    .animate({ fontSize: "1.4vw"}, 100, function(){
+      $(this).css('color', 'white');
+    });
+  });
+};
+buyGold();
+</script>
+

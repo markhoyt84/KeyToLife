@@ -1,0 +1,268 @@
+/*  12 COLUMN : RESPONSIVE GRID SYSTEM
+    DEVELOPER : DENIS LEBLANC
+    URL : http://responsive.gs
+    VERSION : 3.0
+    LICENSE : GPL & MIT */
+
+
+
+/*  SELF CLEARING FLOATS - CLEARFIX METHOD */
+.row:after,
+.col:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/*  DEFAULT ROW STYLES
+    Set bottom padding according to preference */
+.row { padding-bottom: 0em;
+}
+
+
+/* DEFAULT COLUMN STYLES */
+.col {
+    display: block;
+    float: left;
+    width: 100%;
+}
+
+@media(max-width : 500px) {
+    .slogan {
+        display: none;
+    }
+}
+
+@media(max-width : 800px) {
+    .navbuttons{
+        padding-top: 0px;
+        height: 3.5em;
+        text-align: center;
+        background-color: black;
+    }
+
+    .navbuttons a i {
+        font-size: 3.0vw;
+    }
+}
+
+@media (max-width : 650px) {
+    .search_icon {
+        text-align: center;
+    }
+
+    .products_rows {
+        margin-top: 1em;
+    }
+
+    .search-icon{
+        padding-left: 0;
+    }
+
+    .search_filter {
+        width: 120px;
+        float: center;
+        text-align: center;
+        display: block
+    }
+
+    .prod_description_tab_description {
+        border-radius: 0px;
+    }
+
+    .prod_description_tab_reviews {
+        border-radius: 0px;
+    }
+
+    .prod_description_tab_directions {
+        border-radius: 0px;
+    }
+
+    div.show_photo img {
+        max-height: 250px;
+        max-width: 250px;
+    }
+    .category_main {
+        height: auto;
+    }
+
+    .img_table {
+        margin-top: 100px;
+    }
+
+    .label img {
+      width: 33%;
+      height: 33%;
+      float: left;
+    }
+
+    .label_cont {
+        height: auto;
+    }
+
+    .main_img_div {
+        padding-left: 0px;
+
+    }
+
+    .mainimagediv{
+        width: 350px;
+    }
+
+    .main_img_div img {
+    height: auto;
+    width: 350px;
+    margin-top: -10px;
+    margin-left: -15px;
+    }
+
+    .logo {
+        display: none;
+    }
+    .navbuttons{
+        font-size: 1em;
+        height: 30px;
+    }
+
+    .navbuttons a i {
+        font-size: 2em;;
+    }
+
+    ul.topnav li ul.subnav {
+        width: 200px;
+    }
+
+    html ul.topnav li ul.subnav li a {
+        width: 200px;
+    }
+
+    ul.topnav li ul.subnav li{
+        width: 198px;
+    }
+
+    .container {
+        width: 200px;
+    }
+
+     .mobile_menu {
+        display: none;
+    }
+
+    .spacer {
+        height: 29px;
+    }
+
+    ul.topnav li ul.subnav {
+        left: -10px;
+    }
+
+    .navbars {
+        position: relative;
+        display: block;
+        float: left;
+        padding-left: 0.5em;
+    }
+
+    .navbar {
+        float: right;
+        padding-right: 0.5em;
+        display: block;
+    }
+
+    .homebar {
+        height: auto;
+        background-color: #c7ff91;
+        border: 1px solid black;
+    }
+
+    #resources {
+        display:block;
+        width: 100%;
+    }
+
+    .subBlocks {
+        display: block;
+    }
+
+    .welcome p {
+        font-size: 1em;
+    }
+
+    .subBlocks li {
+        list-style: none;
+        width: 150px;
+    }
+
+    .subnav {
+        display: none;
+    }
+
+    ul.topnav {
+        width: 100px;
+        float: left;
+        margin-left: -2.5em;
+}
+
+    .homelink {
+        text-align: center;
+        margin: 0 auto;
+        background-color: #c7ff91;
+        border: 1px solid black;
+    }
+
+    .emptycol {
+        display: none;
+    }
+
+    #index_main .col {
+        margin-top: 1em;
+    }
+
+    .welcome{
+        height: auto;
+        clear: both;
+        position: relative;
+    }
+}
+
+@media ( min-width : 650px ) {
+
+    .gutters .col {
+        margin-left: 2%;
+    }
+
+    .gutters .col:first-child {
+        margin-left: 0;
+    }
+}
+
+
+/*  COLUMN WIDTH ON DISPLAYS OVER CONTAINER WIDTH
+    You might need to play with media queries here to suite your design. */
+@media ( min-width : 650px ) {
+    .span_1 { width: 8.33333333333%; }
+    .span_2 { width: 16.6666666667%; }
+    .span_3 { width: 25%; }
+    .span_4 { width: 33.3333333333%; }
+    .span_5 { width: 41.6666666667%; }
+    .span_6 { width: 50%; }
+    .span_7 { width: 58.3333333333%; }
+    .span_8 { width: 66.6666666667%; }
+    .span_9 { width: 75%; }
+    .span_10 { width: 83.3333333333%; }
+    .span_11 { width: 91.6666666667%; }
+    .span_12 { width: 100%; }
+
+    .gutters .span_1 { width: 6.5%; }
+    .gutters .span_2 { width: 15.0%; }
+    .gutters .span_3 { width: 23.5%; }
+    .gutters .span_4 { width: 32.0%; }
+    .gutters .span_5 { width: 40.5%; }
+    .gutters .span_6 { width: 49.0%; }
+    .gutters .span_7 { width: 57.5%; }
+    .gutters .span_8 { width: 66.0%; }
+    .gutters .span_9 { width: 74.5%; }
+    .gutters .span_10 { width: 83.0%; }
+    .gutters .span_11 { width: 91.5%; }
+    .gutters .span_12 { width: 100%; }
+}

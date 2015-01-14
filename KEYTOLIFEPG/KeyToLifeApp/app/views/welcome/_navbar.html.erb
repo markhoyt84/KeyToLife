@@ -1,0 +1,127 @@
+<div id='login_modal_background'>
+  <%= render 'shopping_carts/proceed_modal' %>
+</div>
+
+<div id="nav" class='navbar-container'>
+  <div class='row'>
+    <div class="mobile_menu col span_5 search_icon">
+      <form action='/search' type="get">
+        <input name="utf8" type="hidden" value="&#x2713;" />
+        <input id='search_form' name='keyword' type="text" required>
+        <button id='search-icon' type='submit' class='inactive search-icon'><span class='search-icon-text'><i class="fa fa-search"></i>Search</span></button>
+      </form>
+    </div>
+    <div class="col span_2 logo">
+      <%= image_tag 'keytolifeheader.jpg', :class => 'logo_image' %>
+    </div>
+  </a>
+    <div class='col span_1 emptycol'></br>
+    </div>
+    <div class="mobile_menu col span_1 poop logged_in logged_in">
+      <% if current_user %>
+        <% @name = current_user.first_name.capitalize + " " + current_user.last_name[0].upcase + "." %>
+        <%= link_to @name, destroy_session_path(:user), :method => :delete, :class => 'logged_in_user' %>
+        <div id='user_profile' class='current_cart'>
+          <p>
+            <%= link_to orders_path(@orders) do %><h3 class='checkout_header'>My Orders</h3><% end %>
+            <a href="#"><h3 class='checkout_header'>My Address Book</h3></a>
+            <%= link_to edit_registration_path(:user) do %><h3 class='checkout_header'>My Account</h3><% end %>
+            <%= link_to destroy_session_path(:user), :method => :delete, :class => 'logged_in_user' do %><h3 class='checkout_header'>Log Out</h3><% end %>
+          </p>
+        </div>
+      <% else %>
+        <a class='log_in_sign_up_button' href='#'>Log In</a>
+      <% end %>
+    </div>
+    <div class="mobile_menu col span_1 poop contact_link">
+      <%= link_to 'Contact', contact_path %>
+      <div id='contact_us' class='current_cart'>
+          <h2 class='checkout_header'>Call Us</h2>
+          <p><h4 class='checkout_header'>Toll Free:</h4> (855) MYKEYTOLIFE or (695-3986)<br>
+            <h4 class='checkout_header'>Office:</h4> (303) 955-7838
+          </p>
+          <%= link_to contact_path, :class => 'cartlink' do %><button class='link_to_button'>CONTACT PAGE</button>
+          <% end %>
+      </div>
+    </div>
+    <div class="mobile_menu col span_1 poop cart_link">
+      <% if @current_cart && @current_cart.cart_items.length > 0 %>
+      <%= link_to shopping_cart_path(@current_cart) do %>Cart (<span id='cartlength'><%= render 'cart_items/num_items' %></span>)<% end %>
+      <% else %>
+      <a href='#'>Cart (<span id='cartlength'><%= render 'cart_items/num_items' %></span>)</a>
+      <% end %>
+      <div id='currentest_cart' class='current_cart'>
+          <%= render 'cart_items/index' %>
+      </div>
+    </div>
+    <div class="col span_1 navbuttons">
+     <i class="social navbars fa fa-bars fa-2x"></i>
+     <a href='https://twitter.com/KeyToLifeGarden'>
+     <i class="social fa fa-twitter-square fa-2x"></i></a>
+      <a href="https://www.facebook.com/keytolifeco" target="_blank"><i class="social fa fa-facebook-square fa-2x"></i></a>
+      <a href='http://instagram.com/keytolifegarden' target='_blank'><i class="social fa fa-instagram fa-2x"></i></a>
+      <i class="navbar social fa fa-shopping-cart fa-2x"></i>
+    </div>
+  </div>
+  <div id='barnav'>
+  <ul>
+    <li>
+      <form action='/search' type="get">
+        <input name="utf8" type="hidden" value="&#x2713;" />
+        <input id='mobile-search-form' name='keyword' type="text" required>
+        <button id='mobil-search-icon' type='submit' class='inactive search-icon'><span class='search-icon-text'><i class="fa fa-search"></i>Search</span></button>
+      </form>
+    </li>
+    <% if user_signed_in? %>
+      <% @name = current_user.first_name.capitalize + " " + current_user.last_name[0].upcase + "." %>
+    <li><%= link_to @name, destroy_session_path(:user), :method => :delete, :class => 'logged_in_user' %>
+    </li>
+    <% else %>
+    <li>
+      <a class='log_in_sign_up_button' href='#'>Log In</a>
+    </li>
+    <% end %>
+    <li><a class='c-w' href='#'>Contact Us</a></li>
+  </ul>
+  </div>
+  <div id='bar_cart'>
+      <div class='mobile_cart'>
+          <%= render 'cart_items/index' %>
+      </div>
+  </div>
+</div>
+<script>
+  searchRequest('#search-icon', '#search_form');
+  searchRequest('#mobil-search-icon', '#mobile-search-form');
+  $(window).scroll(function() {
+    $('#navbar-container').css('top', $(this).scrollTop() + "px");
+  });
+    var open;
+
+  slideOpen('.fa-bars', '#barnav');
+  slideOpen('.fa-shopping-cart', '#bar_cart');
+  navHover('.contact_link', '#contact_us');
+  navHover('.cart_link', '#currentest_cart');
+  navHover('.logged_in', '#user_profile');
+
+  $('.log_in_sign_up_button').on('click', function(){
+    $('#shipping_form').toggle();
+  });
+
+  $('.log_in_sign_up_button').on('click', function(){
+    $('#login_modal_background').css('visibility', 'visible');
+    $('#full_modal_title').text('Key-To-Life');
+    $('#barnav').animate({
+          width: 'hide'
+        });
+          open = false;
+    showLogoImage();
+    $('#proceed_modal').slideDown('fast');
+  });
+
+  $('.new_customer').hide();
+
+  switchNew();
+  switchReturning();
+
+</script>

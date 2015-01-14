@@ -1,0 +1,219 @@
+// Place all the styles related to the products controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.product_title {
+  font-family: 'Audiowide', Arial;
+  text-align: center;
+  font-size: 3em;
+}
+
+.product_info {
+  text-align: center;
+  padding: 1em;
+}
+
+div.show_photo {
+  text-align: center;
+}
+
+div.show_photo img {
+  max-height: 300px;
+  width: 80%;
+  height: auto;
+  max-width:250px;
+  margin: 0 auto;
+  border-radius: 15px;
+  box-shadow: black 0px 0px 10px 1px;
+}
+
+span.price_range {
+  font-family: 'Audiowide', Arial;
+  color: #37FF00;
+  font-size: 2em;
+  text-shadow: 0 0 3px black;
+}
+span.show_desc {
+  font-size: 2.0em;
+}
+
+.product_table td {
+  width: 120px;
+}
+
+span#current_price{
+  font-family: 'Audiowide', Arial;
+  color: #37FF00;
+  font-size: 1.5em;
+  text-shadow: 0 0 3px black;
+}
+
+.product_table {
+  margin: 0 auto;
+}
+
+.buy_form_table td{
+  width: 150px;
+}
+
+// Description and review tab CSS
+
+.prod_description_tab {
+  line-height: 1.5em;
+  margin-bottom: 25px;
+  height: auto;
+  font-family: Arial;
+  color: black;
+  font-size: 1.5em;
+  text-align: center;
+  border-bottom: 1px solid black;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-radius: 5px;
+  padding: 1em;
+}
+
+.buy_button {
+  font-size: 1.5em;
+  border-radius: 8px;
+  z-index: 9999999999999999;
+}
+
+.buy_button:hover {
+  background-color: #37FF00;
+  font-size: 1.8em;
+  box-shadow: black 0px 0px 10px 1px;
+  z-index: 9999999999999999;
+  position: relative;
+}
+
+.prod_description_tab_description {
+  text-align: center;
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.prod_description_tab_directions {
+  text-align: center;
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-radius: 5px;
+  border-bottom: 1px solid black;
+  overflow: hidden;
+}
+
+.prod_description_tab_description:hover {
+  background-color: #333;
+  color: white;
+  transform: scale(1.1);
+  box-shadow: #37FF00 0px 0px 10px 1px;
+  text-shadow: 0 0 2px black;
+}
+
+.prod_description_tab_reviews {
+  text-align: center;
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-radius: 5px;
+  border-bottom: 1px solid black;
+  overflow: hidden;
+}
+
+.prod_description_tab_reviews:hover {
+  background-color: #333;
+  color: white;
+  transform: scale(1.1);
+  box-shadow: #37FF00 0px 0px 10px 1px;
+}
+
+.prod_description_tab_directions:hover {
+  background-color: #333;
+  color: white;
+  transform: scale(1.1);
+  box-shadow: #37FF00 0px 0px 10px 1px;
+}
+
+.prod_reviews_tab {
+  border-bottom: 1px solid black;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-radius: 5px;
+  padding: 1em;
+  margin-bottom: 25px;
+  height: auto;
+}
+
+.prod_directions_tab {
+  line-height: 1.5em;
+  margin-bottom: 25px;
+  height: auto;
+  font-family: Arial;
+  color: black;
+  font-size: 1.5em;
+  text-align: center;
+  border-bottom: 1px solid black;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-radius: 5px;
+  padding: 1em;
+}
+
+.product_display {
+  margin-top: 30px;
+}
+
+p#notice {
+  color: red;
+}
+
+.show_tab {
+  background-color: white;
+}
+
+.show_tab:hover {
+  text-shadow: 0 0 2px black;
+  cursor: pointer;
+  cursor: hand;
+}
+
+.path_bar {
+  border-radius: 5px;
+  box-shadow: black 0px 0px 10px 1px;
+  background-color: #D0FE71;
+}
+
+.category_title_link {
+  display: none;
+  font-size: 2em;
+  font-family: 'Audiowide', Arial;
+  color: black;
+  text-align: center;
+  text-shadow: 0 0 4px #37FF00;
+}
+
+.category_title_link:visited {
+  color: black;
+}
+
+// related products row
+
+.main-page-thumb{
+  width: 100%;
+}
+
+.item {
+  height: 100%;
+  background-color: white;
+}
+
+.related_items .main-page-detail{
+  font-size: 1.4em;
+}
+
+

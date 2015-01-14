@@ -1,0 +1,19 @@
+<%= form_for @subscriber, :remote => true do |f| %>
+  <% if @subscriber.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@subscriber.errors.count, "error") %> prohibited this subscriber from being saved:</h2>
+
+      <ul>
+      <% @subscriber.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <span id='subscribe'>Subscribe...</span><br>
+    <%= f.email_field :email, placeholder: 'Email Address...' %>
+    <%= f.submit '>', :class => 'link_to_button' %>
+  </div>
+<% end %>

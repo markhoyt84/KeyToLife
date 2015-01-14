@@ -1,0 +1,164 @@
+// Place all the styles related to the Welcome controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.current_cart{
+  position: absolute; /*--Important - Keeps subnav from affecting main navigation flow--*/
+  top: 46px;
+  margin-left: -16.66667%;
+  color: white;
+  background: #333;
+  padding: 0;
+  display: none;
+  z-index: 9999;
+  float: center;
+  width: 33.333333%;
+  box-shadow: #c7ff91 0px 0px 10px 1px;
+  border-radius: 5px;
+}
+
+
+.main_logo {
+  height: 40%;
+}
+
+.main_img_div{
+  overflow: hidden;
+  height: 150px;
+  padding-left: 100px;
+  z-index: 1;
+  float: left;
+}
+.main_img_div img {
+  height: auto;
+  width: 400px;
+  margin-top: -25px;
+  position: relative;
+}
+
+.welcome {
+  padding: 0.4em;
+  box-shadow: black 0px 0px 10px 1px;
+  height: 388px;
+  border-radius: 8px;
+  text-align: center;
+  overflow: none;
+}
+
+.welcome p {
+  font-size: 1.5vw;
+}
+
+.navbar-container {
+  box-shadow: #c7ff91 0px 0px 10px 1px;
+}
+
+#footer{
+  margin-bottom: 1em;
+}
+
+.footer_col {
+  text-align: center;
+}
+
+
+#index_main {
+  margin-bottom: 2em;
+}
+
+#subscribe-button {
+display: inline-block;
+}
+
+#email-input {
+  height: 26px;
+  margin-top: 0px;
+  vertical-align: top;
+}
+
+ul.topnav {
+  list-style: none;
+  margin: 0;
+  width: 100%;
+  float: left;
+}
+
+ul.topnav li {
+  float: left;
+  margin: 0;
+  position: relative; /*--Declare X and Y axis base for sub navigation--*/
+}
+ul.topnav li a{
+  padding: 5px 5px;
+  display: block;
+  text-decoration: none;
+  float: center;
+  font-family: 'Audiowide', Arial;
+  color: black;
+}
+
+ul.topnav li span.subhover {
+  background-position: center bottom;
+  cursor: pointer;
+  color: white;
+} /*--Hover effect for trigger--*/
+
+ul.topnav li ul.subnav {
+  list-style: none;
+  position: absolute; /*--Important - Keeps subnav from affecting main navigation flow--*/
+  left: 0; top: 2.1em;
+  color: white;
+  background: #333;
+  margin: 0; padding: 0;
+  z-index: 99999;
+  display: none;
+  float: left;
+  width: 160px;
+  border: 1px solid #111;
+}
+ul.topnav li ul.subnav li{
+  margin: 0; padding: 0;
+  color: red;
+  border-top: 1px solid #252525; /*--Create bevel effect--*/
+  border-bottom: 1px solid #444; /*--Create bevel effect--*/
+  clear: both;
+  width: 158px;
+}
+html ul.topnav li ul.subnav li a {
+  float: left;
+  width: 145px;
+  padding-left: 20px;
+  color:white;
+}
+
+.subBlocks {
+  display:none;
+}
+
+.slogan {
+  margin-bottom: 0px;
+  font-family: 'Audiowide', Arial;
+}
+
+.slogan p{
+  font-family: 'Audiowide', Arial;
+}
+
+.mainimagediv{
+  width: 400px;
+  float:left;
+}
+
+.label img {
+  width: 65%;
+  height: auto;
+  margin-top: 8%;
+}
+
+.label_cont {
+  text-align: center;
+  width: 100%;
+  overflow: none;
+  box-shadow: black 0px 0px 10px 1px;
+  height: 388px;
+  border-radius: 8px;
+}

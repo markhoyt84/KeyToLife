@@ -1,0 +1,151 @@
+<div class='row gutters'>
+  <div id='final_items_list' class='col span_9 final_order_list'>
+    <h1 class='checkout_header'>Order Details:</h1>
+    <br>
+      <%= render partial: 'checkout_table', locals: {current_cart: @current_cart, order: @order} %>
+  </div>
+  <div class='col span_3 coupon ov-n'>
+    <div class='row final_order_list'>
+      <h4 class='checkout_header'>Enter coupon code here:</h4>
+      <form method='post' action='/order/coupon' class='checkout_form'>
+        <input type='text' name='coupon[code]'><br>
+        <br>
+        <input type='submit' value='Apply Coupon'>
+      </form>
+    </div>
+    <br>
+    <div class='row final_order_list'>
+      <h4 class='checkout_header'>Order Notes:</h4>
+      <small>For need-to-know information such as, "Do not include invoice in box, this is a gift", "Please leave package at backdoor", or anything else you'd like us to read before shipping your order.</small><br>
+      <%= form_for([@order, @order_note = @order.order_notes.build], remote: true, :class => 'checkout_form') do |f| %>
+        <%= f.text_area(:notes, :size => 200) %>
+        <%= f.submit('Add Notes', :class => 'add_note') %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<br>
+<div class='row gutters'>
+  <div class='col span_4 address_lists final_order_list'>
+    <h2 class='checkout_header'>Billing Address:</h2>
+    <p>
+      <%= @order.first_name %> <%= @order.last_name %><br>
+      <%= @order.billing_address %><br>
+      <%= @order.billing_address_city %>, <%= @order.billing_address_state %>, <%= @order.billing_address_zip %><br>
+      T: <%= @order.telephone %><br>
+    </p>
+  </div>
+  <div class='col span_4 address_lists final_order_list ta-c'>
+    <h2 class='checkout_header'>Shipping Address:</h2>
+    <p>
+      <%= @order.first_name %> <%= @order.last_name %><br>
+      <%= @order.shipping_address %><br>
+      <%= @order.shipping_address_city %>, <%= @order.shipping_address_state %>, <%= @order.shipping_address_zip %><br>
+      T: <%= @order.telephone %><br>
+    </p>
+  </div>
+  <div class='col span_4 address_lists final_order_list'>
+    <h3 class='checkout_header'>Order Totals:</h3>
+    <p>
+      Subtotal:<span class='totals_tally'><%= number_to_currency(@order.total) %></span><br>
+      Discount:<span class='totals_tally'>0%</span><br>
+      Tax:<span class='totals_tally'><%= number_to_currency(@order.tax) || number_to_currency(0)  %></span><br>
+      <hr>
+      <h3 class='checkout_header'>Grand Total:</h3><span class='totals_tally grand-total'><%= number_to_currency(@order.grand_total) %></span>
+    </p>
+  </div>
+</div>
+<br>
+<div class='row final_order_list ta-c'>
+  <h1 class='checkout_header'>Payment Methods</h1>
+  <br>
+  <% if current_user && current_user.stripe_customer_id == nil || current_user == nil %>
+  <div class='col span_6 payment_divs'>
+    <h2 class='checkout_header underline'>CREDIT CARDS</h2>
+    <br>
+    <%= form_tag purchase_path do %>
+      <span class="payment-errors"></span>
+            <%= hidden_field(:cart, :id, value: @current_cart.id) %>
+            <%= hidden_field(:order, :id, value: @order.id) %>
+            <%= hidden_field(:order, :price, value: @order.grand_total) %>
+            <%= hidden_field(:order, :email, value: @order.email) %>
+    <div class="form-row">
+          <label>
+            <span>Name</span>
+            <%= text_field(:charge, :card, :size => 20, 'data-stripe' => 'name', value: @order.first_name + " " + @order.last_name) %>
+          </label>
+        </div>
+    <br>
+    <div class="form-row">
+      <label>
+      <span>Card Number</span>
+        <%= text_field(:charge, :card_num, :size => 20, 'data-stripe' => 'number') %>
+      </label>
+    </div>
+    <br>
+    <div class="form-row">
+      <label>
+        <span>CVC</span>
+        <%= text_field(:charge, :cvc, :size => 4, 'data-stripe' => 'number') %>
+      </label>
+    </div>
+    <br>
+    <div class="form-row">
+      <label>
+        <span>Expiration (MM/YYYY)</span>
+        <%= text_field(:charge, :exp_month, :size => 2, 'data-stripe' => 'exp_month') %>
+      </label>
+      <span> / </span>
+      <%= text_field(:charge, :exp_year, :size => 4, 'data-stripe' => 'exp-year') %>
+    </div>
+      <br>
+      <%= submit_tag("PAY NOW", :class => 'buy_button pay_button') %>
+    <% end %>
+  </div>
+  <% else %>
+    <div class='col span_6 ta-c payment_divs'>
+        <h2 class='checkout_header underline'>CREDIT-CARDS</h2>
+        <p>**** **** **** <%= @card_num %></p>
+        <%= button_to 'PAY NOW', purchase_path, params: {id: @order.grand_total, email: @order.email}, :class => 'buy_button pay_button' %>
+    </div>
+  <% end %>
+    <div class='col span_6 fl-nd ta-c payment_divs'>
+        <h2 class='checkout_header underline'>PAYPAL</h2>
+          <%= image_tag("http://www.findthatlogo.com/wp-content/gallery/paypal-logos/paypal-credit-card-logo_0.jpg", size: '200x120') %>
+          <br>
+          <br>
+          <br>
+          <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+            <input type="hidden" name="cmd" value="_cart">
+            <input type="hidden" name="business" value="sales@agreenlife.com">
+            <input type="hidden" name="item_name" value="KTL Cart #<%= @order.id %>">
+            <input type="hidden" name="currency_code" value="USD">
+            <input type='hidden' name="amount" value="<%= @order.grand_total %>">
+            <input type='hidden' name="address_1" value='<%= @order.billing_address %>'>
+            <input type="hidden" name="upload" value="1">
+            <% @counter = 1 %>
+            <% @current_cart.cart_items.each do |item| %>
+              <input type='hidden' name="item_number_<%= @counter %>" value="<%= item.id %>" >
+              <input type='hidden' name="item_name_<%= @counter %>" value="<%= item.name %>" >
+              <input type='hidden' name="amount_<%= @counter %>" value="<%= item.price %>" >
+              <% @counter += 1 %>
+            <% end %>
+            <input type='hidden' name="item_name_<%= @counter %>" value="Shipping & Handling">
+            <input type="hidden" name="amount_<%= @counter %>" value="<%= @order.shipping_cost %>">
+            <% @counter += 1 %>
+            <input type="hidden" name="item_name_<%= @counter %>" value="Tax">
+            <input type="hidden" name="amount_<%= @counter %>" value="<%= @order.tax ? @order.tax.round(2) : 0.00 %>">
+            <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_paynow_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+            <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+          </form>
+    </div>
+</div>
+
+
+<!-- <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="DG7CUWPBWBBFW">
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_paynow_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+</form>
+ -->

@@ -1,0 +1,14 @@
+<div class='row cart_item' id='item_<%=order.id%>'>
+  <div class='col span_3 cart_stat_name' style="padding-top: 14px;">
+    <%= order.id %>
+  </div>
+  <div class='col span_3 cart_quanitity' style="padding-top: 14px;">
+    <%= order.created_at.to_formatted_s(:long_ordinal) %>
+  </div>
+  <div class='col span_3 cart_quantity'>
+    <%= order.status %>
+  </div>
+  <div class='col span_3 cart_stat cart_item_price'>
+    <%= link_to 'View', success_order_path(order) %>
+  </div>
+</div>

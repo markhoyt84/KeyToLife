@@ -1,0 +1,9 @@
+<h1>New order</h1>
+
+<%= render 'billing_address_form' %>
+
+<script>
+$('#ship_to_billing_yes').on('click', function(){
+  $('#shipping_form').toggle();
+});
+</script>

@@ -1,0 +1,15 @@
+<div class='row search_thumb_div'>
+  <%= link_to product_path(product) do %>
+  <div class='row'>
+  <%= image_tag(product.photos.first.url, :class => 'search_thumb')%>
+  </div>
+  <div class='row search_info'>
+  <p class='fl-nd d-ib'>
+    <h3 class='search_title'><%= product.name %><br>
+    <small>(product)</small></h3>
+      <%= product.description.range %><br>
+      <%= product.description.headline %>
+  </p>
+  </div>
+</div>
+  <% end %>

@@ -1,0 +1,16 @@
+<div class='row'>
+  <h2 class='category_title'><%= @category.description %></h2>
+  <table class='img_table'>
+    <tr>
+  <% @products.each do |prod| %>
+      <td class='img-list'>
+      <%= render partial: prod%>
+      </td>
+<% end %>
+    </tr>
+</table>
+</div>
+
+<script>
+titleIn($('.category_title'));
+</script>

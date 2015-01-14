@@ -1,0 +1,263 @@
+// Place all the styles related to the ShoppingCarts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.cart_table {
+  width: 100%;
+  text-align: left;
+  padding-left: 10px;
+}
+
+.cart_table p {
+  text-align: center;
+  width: 100%;
+}
+
+
+.view_row {
+  text-align: center;
+}
+
+.cart_page tr.view_row {
+  display: none;
+}
+
+.cart_page tr {
+  height: 3em;
+  border: 1px solid black;
+}
+
+.link_to_button {
+  color: black;
+  font-family: 'Audiowide', Arial;
+}
+
+.link_to_button:hover {
+  color: #c7ff91;
+  text-shadow: 0 0 5px black;
+}
+
+.cartlink:hover{
+   background-color: transparent;
+   text-shadow: 0 0 5px #37FF00;
+}
+
+.total_table{
+  width: 100%;
+  text-align: left;
+  padding-left: 10px;
+}
+
+
+.update_quantity_button {
+  font-size: 0.6em;
+  padding-top: -2px;
+}
+
+select#cart_item_sku{
+  font-size: 0.6em;
+}
+
+.cart_stat {
+  padding-top: 15px;
+  min-height: 50px;
+  height: 100%;
+  text-align: center;
+  font-family: 'Audiowide', Arial;
+  color: black;
+  font-size: 1.7em;
+  text-shadow: 0 0 1px #37FF00;
+}
+
+.cart_stat p {
+  font-family: 'Audiowide', Arial;
+  color: black;
+  font-size: 1.0em;
+  text-shadow: 0 0 1px #37FF00;
+  vertical-align: middle;
+}
+
+.cart_stat_name {
+  padding-top: 7.5px;
+  min-height: 50px;
+  height: auto;
+  padding-bottom: 7.5px;
+  text-align: center;
+  font-family: 'Audiowide', Arial;
+  color: black;
+  font-size: 1.7em;
+  text-shadow: 0 0 1px #37FF00;
+  vertical-align: center;
+}
+
+#new_cart_item {
+  margin-top: -3px;
+}
+
+.cart_title {
+  text-align: center;
+}
+
+.cart_title_row {
+  border-bottom: 2px solid black;
+}
+
+.cart_item:hover {
+  border: 2px solid black;
+  transform: scale(1.05);
+  height: 100%;
+}
+
+.cart_totals {
+  border-top: 2px solid black;
+}
+
+.cart_item {
+  min-height: 60px;
+  height: auto;
+  padding: 5px;
+}
+
+// checkout-page-link-button
+
+.checkout-button {
+  height: 50px;
+  width: auto;
+  margin-top: 2em;
+}
+
+.checkout-button a {
+  font-family: 'Audiowide', Arial;
+  text-decoration: none;
+  font-size: 1.5em;
+}
+
+.checkout-button:hover {
+  transform: scale(1.05);
+  text-decoration: none;
+  transform: scale(1.05);
+  text-shadow: 0 0 2px black;
+}
+
+.checkout-button:hover a{
+  text-decoration: none;
+  background-color: transparent;
+  color: #c7ff91;
+  text-shadow: 0 0 1px black;
+  transform: scale(1.05);
+}
+
+.checkout_button_div {
+  text-align: center;
+}
+
+.billing_title_2 {
+  font-family: 'Audiowide', Arial;
+  border-bottom: 2px solid black;
+  text-align: center;
+  border-left: 2px solid black;
+  box-shadow: 0 0 10px black;
+  background-color: white;
+}
+
+.billing_title_1 {
+  font-family: 'Audiowide', Arial;
+  border-bottom: 2px solid black;
+  text-align: center;
+  box-shadow: 0 0 10px black;
+  background-color: white;
+}
+
+#billing_address {
+  background-color: white;
+  text-align: center;
+}
+
+#shipping_address {
+  background-color: white;
+  text-align: center;
+}
+
+.info_box {
+  background-color: #D0FE71;
+  margin-left: 5%;
+  margin-right: 5%;
+  border-radius: 5px;
+  box-shadow: 0 0 5px black;
+}
+
+.register_on_checkout {
+  margin-top: 2em;
+  text-align: center;
+}
+
+.smaller {
+  font-size: 0.7em;
+}
+
+.registration_row {
+  background-color: white;
+
+}
+
+label {
+  font-weight: bold;
+}
+
+.registration_row {
+  font-weight: bold;
+}
+
+// Proceed to Checkout Modal Styles
+
+#modal_background {
+  visibility: hidden;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  position: fixed;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 999999999999999;
+}
+
+#proceed_modal {
+  width: 40%;
+  min-width: 300px;
+  min-height: 400px;
+  height: auto;
+  background-color: white;
+  opacity: 1.0;
+  margin: 0 auto;
+  display: none;
+  z-index: 9999999999999999999;
+  margin-top: 5em;
+  border-radius: 15px;
+  text-align: center;
+}
+
+.proceed_modal_title_returning {
+  text-align: center;
+  border-top: 2px solid black;
+  border-radius: 10px;
+}
+
+.proceed_modal_title_new {
+  text-align: center;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+  border-radius: 10px;
+  border-left: 2px solid black;
+}
+
+.new_customer {
+  display: none;
+}
+
+// quantities tables
+
+.cart_quantity {
+  text-align:center;
+  padding-top: 1em;
+}

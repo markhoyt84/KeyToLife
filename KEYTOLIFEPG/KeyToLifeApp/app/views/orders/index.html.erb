@@ -1,0 +1,21 @@
+<h1>Listing orders</h1>
+
+<div class='cart_page row'>
+  <div class='row cart_title_row'>
+    <div class='col span_3 cart_title'>
+      <h2>ORDER #</h2>
+    </div>
+    <div class='col span_3 cart_title'>
+      <h2>ORDER DATE</h2>
+    </div>
+    <div class='col span_3 cart_title'>
+      <h2>STATUS</h2>
+    </div>
+    <div class='col span_3 cart_title'>
+      <h2>RECEIPT</h2>
+    </div>
+  </div>
+    <% @orders.each do |order| %>
+      <%= render partial: 'show_order', locals: {order: order} %>
+    <% end %>
+</div>

@@ -1,0 +1,11 @@
+<div class='row'>
+  <table class='img_table'>
+    <tr>
+<% @categories.each do |cat| %>
+      <td class='img-list'>
+      <%= render partial: cat%>
+      </td>
+<% end %>
+    </tr>
+</table>
+</div>

@@ -1,0 +1,6 @@
+$('#currentest_cart').html("<%= j (render(:partial => 'shopping_carts/modal', :locals => {:current_cart => @current_cart})).html_safe %>");
+
+$('#notice').html("<%= flash[:notice] %>");
+$('#cartlength').text(" <%= @items_length %> ");
+
+var form = $('#shopping_cart_form');

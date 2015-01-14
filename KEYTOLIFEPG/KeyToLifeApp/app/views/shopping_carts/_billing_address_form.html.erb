@@ -1,0 +1,94 @@
+<div class='row'>
+<%= form_for(@new_order) do |f| %>
+  <% if @new_order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@new_order.errors.count, "error") %> prohibited this shopping_cart from being saved:</h2>
+
+      <ul>
+      <% @new_order.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div id='billing_address' class='col span_6'>
+    <p class='info_box'>Your billing address must <b>exactly</b> match the mailing address where you receive your monthly credit card statement, or the transaction will likely be rejected.</p>
+
+    <p>
+      <%= f.label :first_name %>
+      <%= f.text_field :first_name, :required => true %>
+    </p>
+    <p>
+      <%= f.label :last_name %>
+      <%= f.text_field :last_name, :required => true %>
+    </p>
+    <p>
+    <%= f.label :address %>
+    <%= f.text_field :billing_address, :required => true%>
+    </p>
+    <p>
+    <%= f.label :city %>
+    <%= f.text_field :billing_address_city, :required => true%>
+    </p>
+    <p>
+    <%= f.label :state %>
+    <%= f.text_field :billing_address_state, :required => true %>
+    </p>
+    <p>
+    <%= f.label 'Zip Code' %>
+    <%= f.text_field :billing_address_zip, :required => true %>
+    </p>
+    <p>
+      <%= f.label 'Email Address' %>
+      <%= f.text_field :email, :required => true %>
+    </p>
+    <p>
+    <%= f.label 'Phone Number' %>
+    <%= f.text_field :telephone, :required => true %>
+    </p>
+  </div>
+  <div id='shipping_address' class='col span_6'>
+    <p class='info_box'>Shipping available to United States and its territories only.</p>
+    <p>
+      <%= f.label 'Ship to Billing Address' %>
+      <%= check_box(@ship_to_bill, {checked: false}) %>
+    </p>
+    <div id='shipping_form'>
+    <p>
+    <%= f.label :address %>
+    <%= f.text_field :shipping_address, :required => true%>
+    </p>
+    <p>
+    <%= f.label :city %>
+    <%= f.text_field :shipping_address_city, :required => true%>
+    </p>
+    <p>
+    <%= f.label :state %>
+    <%= f.text_field :shipping_address_state, :required => true %>
+    </p>
+    <p>
+    <%= f.label 'Zip Code' %>
+    <%= f.text_field :shipping_address_zip, :required => true %>
+    </p>
+    </div>
+</div>
+  <div class='row registration_row'>
+    <div class='col span_12 register_on_checkout'>
+      <h3>Register Now <span class='smaller'>(optional)</span></h3>
+      <hr>
+      <br>
+      <%= f.label 'Username' %>
+      <%= text_field(:user, :email, value: 'email...') %><br>
+      <br>
+      <%= f.label 'Password' %>
+      <%= text_field(:user, :password, placeholder: 'password...', type: :password) %>
+    </div>
+    <div class='col span_12 register_on_checkout'>
+      <h3>Sign Up for our newsletter</h3>
+    </div>
+  </div>
+
+  <%= f.submit %>
+<% end %>

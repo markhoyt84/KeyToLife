@@ -1,0 +1,69 @@
+<div id='modal_background'>
+  <%= render 'proceed_modal' %>
+</div>
+
+<% if current_user %>
+  <h1><%=current_user.first_name.pluralize %> Cart</h1>
+<% else %>
+  <h1>My Cart</h1>
+<% end %>
+<div class='cart_page row'>
+  <div class='row cart_title_row'>
+    <div class='col span_3 cart_title'>
+      <h2>ITEM</h2>
+    </div>
+    <div class='col span_3 cart_title'>
+      <h2></h2>
+    </div>
+    <div class='col span_3 cart_title'>
+      <h2>QUANTITY</h2>
+    </div>
+    <div class='col span_3 cart_title'>
+      <h2>PRICE</h2>
+    </div>
+  </div>
+    <% @current_cart.cart_items.each do |item| %>
+      <%= render partial: 'cart_items/cart_item', locals: {item: item} %>
+    <% end %>
+  <div class= 'cart_page row cart_totals'>
+    <div class='col span_3 cart_title'>
+      <h2>TOTALS:</h2>
+    </div>
+    <div class='col span_3 cart_title'>
+      <h2><%= link_to 'Delete Cart', @current_cart, method: :delete, data: { confirm: 'Are you sure you want to delete your cart?  These changes cannot be undone.' } %></h2>
+    </div>
+    <div class='col span_3 cart_title'>
+      <h2 id='num_item_cart_page'></h2>
+    </div>
+    <div class='col span_3 cart_title'>
+      <h2 id='my_cart_total'><%= number_to_currency(@total) %></h2>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col span_4'>
+      <h1></h1>
+    </div>
+    <div class='col span_4 checkout_button_div'>
+      <button id='checkout' class='checkout-button link_to_button'>Proceed to Checkout</button>
+    </div>
+    <div class='col span_4'>
+      <h1></h1>
+    </div>
+  </div>
+</div>
+
+<script>
+var user = $('.logged_in a').hasClass('logged_in_user');
+console.log(user)
+if(user == false){
+$('#checkout').on('click', function(){
+  $('#login_modal_background').css('visibility', 'visible');
+  $('#proceed_modal').slideDown('fast');
+  $('.login_to_order').val('Proceed to Checkout');
+  $('.new_customer').html("<%= j (render 'orders/form') %>");
+  showLogoImage();
+})
+}else{
+  $('.checkout_button_div').html("<%= j button_to 'Proceed to Checkout', new_order_path, :method => 'get', :class => 'checkout-button link_to_button' %>")
+}
+</script>

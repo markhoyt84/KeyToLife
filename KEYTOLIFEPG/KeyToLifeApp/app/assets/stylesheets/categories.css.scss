@@ -1,0 +1,35 @@
+// Place all the styles related to the categories controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.fake_image {
+  width: 200px;
+  height: 200px;
+}
+
+.category_main {
+  width: 200px;
+  height: 500px;
+}
+
+.category_main ul li {
+  list-style: none;
+}
+
+.category_photo {
+  overflow: none;
+  width: 100%;
+}
+
+.category_photo img{
+position: relative;
+}
+
+.category_title {
+  display: none;
+  font-family: 'Audiowide', Arial;
+  color: black;
+  text-align: center;
+  text-shadow: 0 0 4px #37FF00;
+}

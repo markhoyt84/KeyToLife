@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+<div class='row'>
+  <div class='col span_6 billing_title_1'>
+    <h2>Billing Address</h2>
+  </div>
+  <div class='col span_6 billing_title_2'>
+    <h2>Shipping Address</h2>
+  </div>
+<%= render 'billing_address_form' %>
+</div>
+
+<script>
+$('#ship_to_billing_yes').on('click', function(){
+  $('#shipping_form').toggle();
+});
+</script>
