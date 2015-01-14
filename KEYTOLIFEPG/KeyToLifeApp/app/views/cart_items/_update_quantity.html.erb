@@ -1,5 +1,5 @@
 <%= form_tag(quantity_path, remote: true) do %>
     <%= hidden_field(:item, :id, value: item.id) %>
     <%= text_field(:item, :quantity, value: item.quantity) %>
-    <%= submit_tag('Update', :class => 'quantity-button') %>
+    <%= submit_tag('Update', :class => 'quantity-button link_to_button') %>
 <% end %>

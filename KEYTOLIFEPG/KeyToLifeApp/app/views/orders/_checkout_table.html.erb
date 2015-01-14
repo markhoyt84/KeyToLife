@@ -23,7 +23,7 @@
           <td class='size'>TAX:</td><td class='item_name'><p></p></td><td class='cost'><%= number_to_currency(@order.tax) || number_to_currency(0) %></td>
         </tr>
         <tr>
-          <td class='size'>SHIPPING AND HANDLING:</td><td class='item_name'><p></p></td><td class='cost'><%= number_to_currency(0) %></td>
+          <td class='size'>SHIPPING AND HANDLING:</td><td class='item_name'><p></p></td><td class='cost'><%= number_to_currency(@order.shipping_cost) %></td>
         </tr>
         <tr class='gtotalhide'>
           <td class='size'>GRAND TOTAL:</td><td class='item_name'><p></p></td><td class='cost'><%= number_to_currency(@order.grand_total) %></td>

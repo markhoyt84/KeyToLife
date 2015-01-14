@@ -68,6 +68,7 @@ td.cost {
   box-shadow: 0 0 10px black;
   background-color: white;
   padding: 5px;
+  height: auto;
 }
 
 #order_notes {
@@ -83,14 +84,15 @@ td.cost {
 }
 
 #final_items_list {
-  min-height: 378px;
+  min-height: 366px;
   height: auto;
 }
 
 .coupon {
-  height: 100%;
+  height: auto;
   max-height:378px;
   text-align: center;
+  overflow: none;
 }
 
 .hidden_vals {

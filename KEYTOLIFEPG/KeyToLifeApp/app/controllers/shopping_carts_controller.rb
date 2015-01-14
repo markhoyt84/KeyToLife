@@ -51,7 +51,8 @@ class ShoppingCartsController < ApplicationController
       @cart_items = session[:cart_items]
       if @shopping_cart.save
         @current_cart = @shopping_cart
-        format.js { flash.now[:notice] = "Successfully added to cart"}
+        @products = Product.where("name = '#{@product.name}'")
+        format.js { flash[:notice] = "Successfully added to cart"}
       else
         format.js { flash[:notice] = "Item could not be added to cart"}
       end

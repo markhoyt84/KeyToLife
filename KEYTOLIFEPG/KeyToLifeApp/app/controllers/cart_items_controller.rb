@@ -26,6 +26,7 @@ class CartItemsController < ApplicationController
     @product = Product.find(product_id)
     @cart = session[:cart_items]
     count = @cart.length
+    @products = Product.where("name = '#{@product.name}'")
     if count == 0
       @cart << @product
       @shopping_cart = ShoppingCart.find(session[:current_cart])
@@ -62,13 +63,14 @@ class CartItemsController < ApplicationController
     respond_to do |format|
       if @newItem.save
         @total = @shopping_cart.total
-        @current_cart = @shopping_cart
+        @items_length = @shopping_cart.cart_items.length
         format.js { flash.now[:notice] = "Successfully added to cart"}
       else
         format.js { flash[:notice] = "Item could not be added to cart"}
       end
     end
     @current_cart = @shopping_cart
+    @products = Product.where("name = '#{@product.name}'")
   end
 
   def update

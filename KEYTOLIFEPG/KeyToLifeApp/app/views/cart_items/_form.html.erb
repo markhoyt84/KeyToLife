@@ -1,3 +1,4 @@
+<p id="notice"><%= notice %></p>
 <%= form_for([@current_cart, @cart_item = @current_cart.cart_items.build], :remote => true) do |f| %>
   <table class='buy_form_table'>
     <tr>

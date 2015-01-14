@@ -11,11 +11,12 @@
 <br>
 <span class='show_desc'><%= @description.headline %></span><br>
 </div>
-<div class='product_info col span_6'>
-  <p id="notice"><%= notice %></p>
+<div id='shopping_cart_form' class='product_info col span_6'>
   <% if session[:current_cart] == nil %>
+    <p id="notice"><%= notice %></p>
     <%= render 'shopping_carts/form' %>
   <% else %>
+     <p id="notice"><%= notice %></p>
     <%= render 'cart_items/form' %>
   <% end %>
 </div>
@@ -117,11 +118,20 @@ $('.prod_description_tab_description').on('click', function(){
   $('.prod_description_tab_description').css('border-bottom', '0px solid white');
 });
 
-$('.buy_button').on('click', function(){
-  console.log('coward');
-  var cartNum = parseInt($('#cartlength').text());
-  console.log
-  $('#cartlength').text("<%= j render 'cart_items/num_items' %>");
-  $('#notice').html("<%= flash[:notice] %>")
-});
+function buyGold(){
+  $('.buy_button').on('click', function(){
+    console.log('dick');
+    $('.cart_link a').animate({ fontSize: "1.5vw"}, {
+    duration: 100,
+    step: function(){
+      $(this).css('color', '#ffd700');
+    }
+  })
+    .animate({ fontSize: "1.4vw"}, 100, function(){
+      $(this).css('color', 'white');
+    });
+  });
+};
+buyGold();
 </script>
+

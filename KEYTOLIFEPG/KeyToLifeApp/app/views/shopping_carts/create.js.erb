@@ -1,3 +1,7 @@
 $('#currentest_cart').html("<%= j (render(:partial => 'shopping_carts/modal', :locals => {:current_cart => @current_cart})).html_safe %>");
 
-$('#notice').html("<%= flash[:notice] %>")
+$('#shopping_cart_form').html("<%= j (render(:partial => 'cart_items/form', :locals => {:current_cart => @current_cart})).html_safe %>");
+
+$('.cartlink a').addClass('buy_button');
+$('#cartlength').text(" <%= @current_cart.cart_items.length - 1%> ");
+$('#notice').html("<%= flash[:notice] %>");

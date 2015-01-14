@@ -154,7 +154,7 @@ class OrdersController < ApplicationController
       email = params[:user][:email]
       password = params[:user][:password]
       if password != ""
-        @user = User.create(:email => email, :password => password, :first_name => @order.first_name, :last_name => @order.last_name, :billing_address => @order.billing_address, :billing_address_city => @order.billing_address_city, :billing_address_zip => @order.billing_address_zip, :telephone => @order.telephone)
+        @user = User.create(:email => email, :password => password, :first_name => @order.first_name, :last_name => @order.last_name, :billing_address => @order.billing_address, :city => @order.billing_address_city, :zip => @order.billing_address_zip, :state => @order.billing_address_state, :telephone => @order.telephone)
         sign_in @user
       end
     end
@@ -167,7 +167,7 @@ class OrdersController < ApplicationController
     if params[:sign_up_for_newsletter] && params[:sign_up_for_newsletter][:yes] == "1"
       @subscriber = Subscriber.create(:email => params[:email])
     end
-    @order.shipping_cost = @order.get_quote(@weight)
+    @order.get_quote(@weight)
     p '*' * 100
     p @order
     p '*' * 100

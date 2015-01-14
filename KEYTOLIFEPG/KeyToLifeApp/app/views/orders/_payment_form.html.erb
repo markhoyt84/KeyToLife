@@ -4,10 +4,9 @@
     <br>
       <%= render partial: 'checkout_table', locals: {current_cart: @current_cart, order: @order} %>
   </div>
-  <div class='col span_3 coupon'>
+  <div class='col span_3 coupon ov-n'>
     <div class='row final_order_list'>
       <h4 class='checkout_header'>Enter coupon code here:</h4>
-      <br>
       <form method='post' action='/order/coupon' class='checkout_form'>
         <input type='text' name='coupon[code]'><br>
         <br>
@@ -18,7 +17,6 @@
     <div class='row final_order_list'>
       <h4 class='checkout_header'>Order Notes:</h4>
       <small>For need-to-know information such as, "Do not include invoice in box, this is a gift", "Please leave package at backdoor", or anything else you'd like us to read before shipping your order.</small><br>
-      <br>
       <%= form_for([@order, @order_note = @order.order_notes.build], remote: true, :class => 'checkout_form') do |f| %>
         <%= f.text_area(:notes, :size => 200) %>
         <%= f.submit('Add Notes', :class => 'add_note') %>
@@ -28,7 +26,7 @@
 </div>
 <br>
 <div class='row gutters'>
-  <div class='col span_3 address_lists final_order_list'>
+  <div class='col span_4 address_lists final_order_list'>
     <h2 class='checkout_header'>Billing Address:</h2>
     <p>
       <%= @order.first_name %> <%= @order.last_name %><br>
@@ -37,8 +35,8 @@
       T: <%= @order.telephone %><br>
     </p>
   </div>
-  <div class='col span_3 address_lists final_order_list'>
-    <h3 class='checkout_header'>Shipping Address:</h3>
+  <div class='col span_4 address_lists final_order_list ta-c'>
+    <h2 class='checkout_header'>Shipping Address:</h2>
     <p>
       <%= @order.first_name %> <%= @order.last_name %><br>
       <%= @order.shipping_address %><br>
@@ -46,7 +44,7 @@
       T: <%= @order.telephone %><br>
     </p>
   </div>
-  <div class='col span_3 address_lists final_order_list'>
+  <div class='col span_4 address_lists final_order_list'>
     <h3 class='checkout_header'>Order Totals:</h3>
     <p>
       Subtotal:<span class='totals_tally'><%= number_to_currency(@order.total) %></span><br>
@@ -137,8 +135,17 @@
             <% @counter += 1 %>
             <input type="hidden" name="item_name_<%= @counter %>" value="Tax">
             <input type="hidden" name="amount_<%= @counter %>" value="<%= @order.tax ? @order.tax.round(2) : 0.00 %>">
-            <input type="button" class='buy_button pay_button' border="0" name="submit" value='Pay With Paypal' alt="PayPal - The safer, easier way to pay online!">
+            <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_paynow_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
             <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
           </form>
     </div>
 </div>
+
+
+<!-- <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="DG7CUWPBWBBFW">
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_paynow_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+</form>
+ -->
